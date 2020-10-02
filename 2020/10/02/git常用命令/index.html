@@ -14,6 +14,7 @@
 
   
   
+  <meta name="description" content="提交代码流程1 从 master 分支开出新分支 fe..."> 
   
   <meta name="author" content="John Doe"> 
 
@@ -164,13 +165,33 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>0</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>982</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        
+        <h2 id="提交代码流程"><a href="#提交代码流程" class="headerlink" title="提交代码流程"></a>提交代码流程</h2><p>1 从 master 分支开出新分支 feature/example：git checkout -b feature/example</p>
+<p>2 将此feature分支推送到远端： git push –set-upstream origin feature/example</p>
+<p>3 查看此分支git状态：git status</p>
+<p>4 查看分支改动的详细代码：git diff</p>
+<p>5 将改动文件从工作区添加到暂存区：git add .</p>
+<p>6 将改动文件从暂存区提交到当前分支：git commit -m ‘xxx’</p>
+<p>7 5和6两步可以合写为： git commit -am ‘xxx’</p>
+<p>8 将分支改动推送到远端：git push</p>
+<p>9 将分支发到测试环境：先切到测试分支develop, 比较分支的文件差异 – git diff feature/example( 审查代码 防止出错 ) 再合并：git merge feature/example –no-ff 最后再 git push 推送到远端</p>
+<p>10 分支发到预发或线上环境同上</p>
+<h2 id="撤回相关"><a href="#撤回相关" class="headerlink" title="撤回相关"></a>撤回相关</h2><p>11 5步添加之前想撤销所有提交：git checkout .</p>
+<p>12 5步添加之后想要撤销提交：git reset .</p>
+<p>13 6步commit之后想撤回：先 git reset HEAD~1 然后 强推到远端 git push origin feature/example –force</p>
+<p>14 想撤销某个版本commit：git revert -m 1 版本号 参考：<a target="_blank" rel="noopener" href="https://blog.justwe.site/post/git-revert/">记一次git revert的经历</a></p>
+<p>15 merge到dev分支之后想撤回合并：先切到dev分支：git checkout develop, 查出要回退的版本号：git log或者git reflog, 最后 git reset –mixed 版本号</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>查看所有分支：git branch -a</p>
+<p>删除本地分支：git branch -d feature/example</p>
+<p>删除远程分支：第一步：git branch -r -d origin/feature/example 第二步：git push origin :feature/example</p>
+<p>查看命令树：git log –oneline –graph –decorate –all</p>
+<p>rebase: <a target="_blank" rel="noopener" href="http://gitbook.liuhui998.com/4_2.html">rebase</a></p>
+
       </section>
       <section class="extra">
         
