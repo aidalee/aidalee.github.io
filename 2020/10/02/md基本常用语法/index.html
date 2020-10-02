@@ -14,6 +14,8 @@
 
   
   
+  <meta name="description" content="标题从#、##、…###### 代表h1~h6
+列表无..."> 
   
   <meta name="author" content="aidalee"> 
 
@@ -164,13 +166,73 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>0</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1632</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        
+        <h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><p>从#、##、…###### 代表h1~h6</p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><p>+、-、*都可</p>
+<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><p>1 、2. …</p>
+<h1 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h1><h2 id="无序列表嵌套"><a href="#无序列表嵌套" class="headerlink" title="无序列表嵌套"></a>无序列表嵌套</h2><ul>
+<li>123<ul>
+<li>abc</li>
+<li>bcd</li>
+<li>cde</li>
+</ul>
+</li>
+<li>465</li>
+<li>789</li>
+</ul>
+<h2 id="有序列表嵌套"><a href="#有序列表嵌套" class="headerlink" title="有序列表嵌套"></a>有序列表嵌套</h2><ol>
+<li>abcd<ol>
+<li>abcde</li>
+<li>abcde</li>
+<li>abcde</li>
+</ol>
+</li>
+<li>bcde</li>
+<li>cdef</li>
+</ol>
+<h1 id="引用说明区块"><a href="#引用说明区块" class="headerlink" title="引用说明区块"></a>引用说明区块</h1><h2 id="正常形式"><a href="#正常形式" class="headerlink" title="正常形式"></a>正常形式</h2><blockquote>
+<p>引用内容、说明内容。在语句前面加一个 &gt; ，注意是英文的那个右尖括号，注意空格，引用因为是一个区块，理论上是应该什么内容都可以放，比如说：标题，列表，引用等等。</p>
+</blockquote>
+<h2 id="嵌套区块"><a href="#嵌套区块" class="headerlink" title="嵌套区块"></a>嵌套区块</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ruby">&gt; 一级引用<br><span class="hljs-meta">&gt;&gt;</span> 二级引用<br><span class="hljs-meta">&gt;&gt;</span>&gt; 三级引用<br><span class="hljs-meta">&gt;&gt;</span>&gt;&gt; 四级引用<br><span class="hljs-meta">&gt;&gt;</span>&gt;&gt;&gt; 五级引用<br><span class="hljs-meta">&gt;&gt;</span>&gt;&gt;&gt;&gt; 六级引用<br></code></pre></td></tr></table></figure>
+
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><h2 id="少量代码，单行使用，直接用-包裹起来就行了"><a href="#少量代码，单行使用，直接用-包裹起来就行了" class="headerlink" title="少量代码，单行使用，直接用`包裹起来就行了"></a>少量代码，单行使用，直接用`包裹起来就行了</h2><p><code>console.log(1)</code></p>
+<h2 id="大量代码，需要多行使用，用-包裹起来"><a href="#大量代码，需要多行使用，用-包裹起来" class="headerlink" title="大量代码，需要多行使用，用```包裹起来"></a>大量代码，需要多行使用，用```包裹起来</h2><h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><h2 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h2><p>链接的文字放在[]中，链接地址放在随后的()中，链接也可以带title属性，链接地址后面空一格，然后用引号引起来</p>
+<p><a target="_blank" rel="noopener" href="https://www.blog.com/" title="创作你的创作">blog</a></p>
+<h2 id="参数式"><a href="#参数式" class="headerlink" title="参数式"></a>参数式</h2><p>链接的文字放在[]中，链接地址放在随后的:后，链接地址后面空一格，然后用引号引起来</p>
+<p>参数定义的其他写法<br><a target="_blank" rel="noopener" href="https://www.blog.com/" title="创作你的创作">blog</a>: <a target="_blank" rel="noopener" href="https://www.blog.com/">https://www.blog.com</a> (创作你的创作)<br><a target="_blank" rel="noopener" href="https://www.blog.com/" title="创作你的创作">blog</a>: <a target="_blank" rel="noopener" href="https://www.blog.com/">https://www.blog.com</a> “创作你的创作”</p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><h2 id="行内式-1"><a href="#行内式-1" class="headerlink" title="行内式"></a>行内式</h2><p>和链接的形式差不多，图片的名字放在[] 中，图片地址放在随后的()中，title属性（图片地址后面空一格，然后用引号引起来）,注意的是[]前要加上!<br><code>![my-logo.png](https://www.blog.com/images/logo.png &quot;my-logo&quot;)</code></p>
+<h2 id="参数式-1"><a href="#参数式-1" class="headerlink" title="参数式"></a>参数式</h2><p>图片的文字放在[] 中，图片地址放在随后的:后，title属性（图片地址后面空一格，然后用引号引起来）,注意引用图片的时候在[]前要加上!</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">[my-logo.png]: https:<span class="hljs-regexp">//</span>www.blog.com<span class="hljs-regexp">/images/</span>logo.png <span class="hljs-string">&quot;my-logo&quot;</span><br><span class="hljs-regexp">//</span>参数定义的其他写法<br>[my-logo.png]: https:<span class="hljs-regexp">//</span>www.blog.com<span class="hljs-regexp">/images/</span>logo.png <span class="hljs-string">&#x27;my-logo&#x27;</span><br>[my-logo.png]: https:<span class="hljs-regexp">//</span>www.blog.com<span class="hljs-regexp">/images/</span>logo.png (my-logo)<br>[my-logo.png]: &lt;https:<span class="hljs-regexp">//</span>www.blog.com<span class="hljs-regexp">/images/</span>logo.png&gt; <span class="hljs-string">&quot;my-logo&quot;</span><br></code></pre></td></tr></table></figure>
+<h1 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h1><p>分割线可以由* - _（星号，减号，底线）这3个符号的至少3个符号表示，注意至少要3个，且不需要连续，有空格也可以</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">---<br><span class="hljs-bullet">- </span>- -<br>------<br>**<span class="hljs-strong">*</span><br><span class="hljs-strong">*</span> * <span class="hljs-strong">*</span><br><span class="hljs-strong">*</span>****<span class="hljs-strong">*</span><br><span class="hljs-strong">___</span><br><span class="hljs-strong">_ _ _</span><br><span class="hljs-strong">______</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ol>
+<li>强调字体</li>
+</ol>
+<p>一个星号或者是一个下划线包起来，会转换为<em>倾斜，如果是2个，会转换为<strong>加粗</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-emphasis">*md*</span>    <br><span class="hljs-strong">**md**</span><br><span class="hljs-emphasis">_md_</span>   <br><span class="hljs-strong">__md__</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>转义</li>
+</ol>
+<p>基本上和js转义一样,\加需要转义的字符</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-tag">\<span class="hljs-name">\</span></span><br><span class="hljs-tag">\<span class="hljs-name">*</span></span><br><span class="hljs-tag">\<span class="hljs-name">+</span></span><br><span class="hljs-tag">\<span class="hljs-name">-</span></span><br><span class="hljs-tag">\<span class="hljs-name">`</span></span><br><span class="hljs-tag">\<span class="hljs-name">_</span></span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删除线</li>
+</ol>
+<p>用~~把需要显示删除线的字符包裹起来</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haml">~~删除~~<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>表格</li>
+</ol>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">//例子一<br>|<span class="hljs-string">123</span>|<span class="hljs-string">234</span>|<span class="hljs-string">345</span>|<br>|<span class="hljs-string">:-</span>|<span class="hljs-string">:-:</span>|<span class="hljs-string">-:</span>|<br>|<span class="hljs-string">abc</span>|<span class="hljs-string">bcd</span>|<span class="hljs-string">cde</span>|<br>|<span class="hljs-string">abc</span>|<span class="hljs-string">bcd</span>|<span class="hljs-string">cde</span>|<br>|<span class="hljs-string">abc</span>|<span class="hljs-string">bcd</span>|<span class="hljs-string">cde</span>|<br>//例子二<br>|<span class="hljs-string">123</span>|<span class="hljs-string">234</span>|<span class="hljs-string">345</span>|<br>|<span class="hljs-string">:---</span>|<span class="hljs-string">:---:</span>|<span class="hljs-string">---:</span>|<br>|<span class="hljs-string">abc</span>|<span class="hljs-string">bcd</span>|<span class="hljs-string">cde</span>|<br>|<span class="hljs-string">abc</span>|<span class="hljs-string">bcd</span>|<span class="hljs-string">cde</span>|<br>|<span class="hljs-string">abc</span>|<span class="hljs-string">bcd</span>|<span class="hljs-string">cde</span>|<br>//例子三<br>123|<span class="hljs-string">234</span>|345<br>:-|<span class="hljs-string">:-:</span>|<span class="hljs-string">-:</span><br><span class="hljs-string">abc</span>|<span class="hljs-string">bcd</span>|cde<br>abc|<span class="hljs-string">bcd</span>|cde<br>abc|<span class="hljs-string">bcd</span>|cde<br></code></pre></td></tr></table></figure>
       </section>
       <section class="extra">
         
