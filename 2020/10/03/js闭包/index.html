@@ -7,13 +7,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hexo</title>
+  <title>js闭包 - Hexo</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
+  <meta name="description" content="作用域的实现机制几乎每一种编程语言，它最基本的能力都是..."> 
   
   <meta name="author" content="aidalee"> 
 
@@ -62,7 +63,7 @@
     var CONFIG = window.CONFIG || {};
     var ZHAOO = window.ZHAOO || {};
     CONFIG = {
-      isHome: true,
+      isHome: false,
       fancybox: true,
       pjax: false,
       lazyload: {
@@ -102,6 +103,14 @@
   <div class="loading"></div>
   
 
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">js闭包</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
 
   <nav class="menu">
   <div class="menu-wrap">
@@ -145,143 +154,84 @@
   </div>
 </nav>
   <main id="main">
-  
-    <div class="preview">
-  <nav class="navbar j-navbar-menu">
-    <i class="iconfont iconmenu"></i>
-  </nav>
-  <div class="preview-image">
-    <h2 class="preview-motto" id="motto"></h2>
-    <!-- <span class="preview-cursor">|</span> -->
-    
-    <img src="/images/theme/cloud.png" class="preview-overlay" draggable="false">
-    
-  </div>
-  <div class="preview-scroll">
-    <a href="#container" class="smooth-scroll"><i class="iconfont iconMouse"></i></a>
-  </div>
-</div>
-  
   <div class="container" id="container">
-    <section class="row post">
-  
-  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
-  <div class="post-wrap">
-    
-    <a href="/2020/10/03/js%E9%97%AD%E5%8C%85/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-    </a>
-    <div class="post-content">
-      <h3 class="post-title"><a href="/2020/10/03/js%E9%97%AD%E5%8C%85/">js闭包</a></h3>
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">js闭包</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 03, 2020</span
+        class="post-info-item">
       
-      
-      
-      <div class="post-excerpt">
-        <p class="substr-3">作用域的实现机制几乎每一种编程语言，它最基本的能力都是能够存储变量当中的值、并且允许我们对这个变量的值进行访问和修改。那么有了变量之后，应该把它放在那里、程序如何找到它们？这是不是需要我们提前约...</p>
-      </div>
-      <div class="post-info">
-        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 03, 2020</span
-          class="post-info-item">
-        
-        <span class="post-info-item"><i class="iconfont iconfont-size"></i>825</span>
-      </div>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>825</span>
     </div>
   </div>
-</div>
-  
-  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
-  <div class="post-wrap">
-    
-    <a href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-    </a>
-    <div class="post-content">
-      <h3 class="post-title"><a href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">md基本常用语法</a></h3>
-      
-      
-      
-      <div class="post-excerpt">
-        <p class="substr-3">标题从#、##、…###### 代表h1~h6
-列表无序列表+、-、*都可
-有序列表1 、2. …
-嵌套列表无序列表嵌套
-123
-abc
-bcd
-cde
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="作用域的实现机制"><a href="#作用域的实现机制" class="headerlink" title="作用域的实现机制"></a>作用域的实现机制</h1><p>几乎每一种编程语言，它最基本的能力都是能够<strong>存储变量当中的值、并且允许我们对这个变量的值进行访问和修改</strong>。那么有了变量之后，应该把它放在那里、程序如何找到它们？<br>这是不是需要我们<strong>提前约定好一套存储变量、访问变量的规则</strong>？这套规则，就是我们常说的<strong>作用域</strong>。更多时候，我们提到作用域的时候，指的是这个规则约束下的一个变量、函数、标识符<strong>可以被访问的区域</strong>。</p>
+<p>要想理解作用域的实现机制，我们需要结合 JS 的编译原理一起来看。<br>下面是一个简单的声明语句：<br><code>var name = &#39;xl&#39;</code></p>
+<p>在 JS 引擎眼里，它包含了两个声明：</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs delphi"><span class="hljs-keyword">var</span> <span class="hljs-keyword">name</span> （编译时处理）<br><span class="hljs-keyword">name</span> = <span class="hljs-string">&#x27;xl&#x27;</span> （运行时处理）<br></code></pre></td></tr></table></figure>
 
+<h1 id="作用域套作用域，就有了作用域链"><a href="#作用域套作用域，就有了作用域链" class="headerlink" title="作用域套作用域，就有了作用域链"></a>作用域套作用域，就有了作用域链</h1><p>在 JS 世界中，目前有三种作用域：</p>
+<ul>
+<li>全局作用域</li>
+<li>函数作用域</li>
+<li>块作用域</li>
+</ul>
+<p>当一个块或者一个函数嵌套在另一个块或者函数中时，就发生了作用域的嵌套。在查找变量的过程中，层层递进的作用域，就形成了一条作用域链</p>
+<h1 id="理解闭包"><a href="#理解闭包" class="headerlink" title="理解闭包"></a>理解闭包</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addABC</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>,b = <span class="hljs-number">2</span>;<br>  <br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> a+b+c;<br>  &#125;<br>  <span class="hljs-keyword">return</span> add;<br>&#125;<br><br><span class="hljs-keyword">var</span> c = <span class="hljs-number">3</span><br><br><span class="hljs-keyword">var</span> globalAdd = addABC()<br><br><span class="hljs-built_in">console</span>.log(globalAdd()) <span class="hljs-comment">// 6</span><br><br></code></pre></td></tr></table></figure>
+<p>其中 add 这个函数，它嵌套在函数 addABC 的内部，想要查找 a、b、c 三个变量，它得去上层的 addABC 作用域里找，像 a、b、c 这样在函数中被使用，但它既不是函数参数、也不是函数的局部变量，而是一个不属于当前作用域的变量，此时它相对于当前作用域来说，就是一个自由变量。而像 add 这样引用了自由变量的函数，就叫闭包。(或者说阮读取其他函数内部变量的函数就是闭包)</p>
 
-465
-789
-
-有序列表嵌套
-ab...</p>
-      </div>
-      <div class="post-info">
-        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span
-          class="post-info-item">
+      </section>
+      <section class="extra">
         
-        <span class="post-info-item"><i class="iconfont iconfont-size"></i>1632</span>
-      </div>
-    </div>
-  </div>
-</div>
+        <ul class="copyright">
   
-  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
-  <div class="post-wrap">
-    
-    <a href="/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-    </a>
-    <div class="post-content">
-      <h3 class="post-title"><a href="/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a></h3>
-      
-      
-      
-      <div class="post-excerpt">
-        <p class="substr-3">提交代码流程
-从 master 分支开出新分支 feature/example：git checkout -b feature/example
+  <li><strong>本文作者：</strong>aidalee</li>
+  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/10/03/js%E9%97%AD%E5%8C%85/index.html">https://aidalee.github.io/2020/10/03/js%E9%97%AD%E5%8C%85/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
 
-将此feature分支推送到远端： git pu...</p>
-      </div>
-      <div class="post-info">
-        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span
-          class="post-info-item">
         
-        <span class="post-info-item"><i class="iconfont iconfont-size"></i>965</span>
-      </div>
-    </div>
-  </div>
-</div>
+<nav class="nav">
   
-  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
-  <div class="post-wrap">
-    
-    <a href="/2020/10/01/hello-world/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-    </a>
-    <div class="post-content">
-      <h3 class="post-title"><a href="/2020/10/01/hello-world/">Hello World</a></h3>
+  
+    <a href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">md基本常用语法<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
       
-      
-      
-      <div class="post-excerpt">
-        <p class="substr-3">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
-      </div>
-      <div class="post-info">
-        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 01, 2020</span
-          class="post-info-item">
-        
-        <span class="post-info-item"><i class="iconfont iconfont-size"></i>444</span>
-      </div>
-    </div>
-  </div>
-</div>
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
   
 </section>
-    <section class="paginator">
-  
-</section>
+      
+    </section>
+  </div>
+</article>
   </div>
 </main>
   <footer class="footer">
