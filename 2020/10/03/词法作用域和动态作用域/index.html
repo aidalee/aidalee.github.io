@@ -7,13 +7,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>标签 - Hexo</title>
+  <title>词法作用域和动态作用域 - Hexo</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
+  <meta name="description" content="站在语言的层面来看，作用域其实有两种主要的工作模型：
+..."> 
   
   <meta name="author" content="aidalee"> 
 
@@ -105,7 +107,7 @@
 
 <nav class="navbar">
   <div class="left"></div>
-  <div class="center">标签</div>
+  <div class="center">词法作用域和动态作用域</div>
   <div class="right">
     <i class="iconfont iconmenu j-navbar-menu"></i>
   </div>
@@ -153,13 +155,96 @@
   </div>
 </nav>
   <main id="main">
-  <section class="categories">
-    <header class="header">
-  <h1 class="header-title">分类</h1>
-  <p class="header-subtitle">共: 3 个</p>
-</header>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%80%E4%BB%8B/">简介</a><span class="category-list-count">1</span></li></ul>
-  </section>
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">词法作用域和动态作用域</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 03, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>919</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>站在语言的层面来看，作用域其实有两种主要的工作模型：</p>
+<ol>
+<li>词法作用域：也称为静态作用域。这是最普遍的一种作用域模型</li>
+<li>动态作用域：相对“冷门”，但确实有一些语言采纳的是动态作用域，如：Bash 脚本、Perl 等</li>
+</ol>
+<h1 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h1><p>直接来看一段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> name = <span class="hljs-string">&#x27;xl&#x27;</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showName</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(name);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeName</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&#x27;BigBear&#x27;</span>;<br>    showName();<br>&#125;<br><br>changeName();<br></code></pre></td></tr></table></figure>
+
+<p>这是一段 JS 代码，它的运行结果是 ‘xl’。这是因为 JS 采取的就是词法（静态）作用域，这段代码运行过程中，经历了这样的变量定位流程：</p>
+<ol>
+<li>在 showName 函数的函数作用域内查找是否有局部变量 name</li>
+<li>发现没找到，于是根据书写的位置，查找上层作用域（全局作用域），找到了 name 的值是 xl，所以结果会打印 xl。</li>
+</ol>
+<p>这里我们作用域的划分，是在书写的过程中（例子中也就是在函数定义的时候，块作用域同理是在代码块定义的时候），根据你把它写在哪个位置来决定的。像这样划分出来的作用域，遵循的就是词法作用域模型。</p>
+<h1 id="动态作用域"><a href="#动态作用域" class="headerlink" title="动态作用域"></a>动态作用域</h1><p>动态作用域机制下，同样的一段代码，会发生下面的事情:</p>
+<ol>
+<li>在 showName 函数的函数作用域内查找是否有局部变量 name</li>
+<li>发现没找到，于是沿着函数调用栈、在调用了 showName 的地方继续找 name。这时大家看看它找到哪去了？是不是就找到 changeName 里去了？ 刚好，changeName 里有一个 name，于是这个 name 就会被引用到 showName 里去。</li>
+</ol>
+<p>所以如果是动态作用域，那么这段代码运行的结果就会是 ‘BigBear’ 了</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>词法作用域和动态作用域的区别其实在于<strong>划分作用域的时机</strong>：</p>
+<ol>
+<li>词法作用域： 在代码书写的时候完成划分，作用域链沿着它定义的位置往外延伸</li>
+<li>动态作用域： 在代码运行时完成划分，作用域链沿着它的调用栈往外延伸</li>
+</ol>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>aidalee</li>
+  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/index.html">https://aidalee.github.io/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+        
+<nav class="nav">
+  
+  
+    <a href="/2020/10/03/LHS%E3%80%81RHS/">LHS、RHS<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
 </main>
   <footer class="footer">
   <div class="footer-social">
