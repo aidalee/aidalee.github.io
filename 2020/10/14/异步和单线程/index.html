@@ -165,7 +165,7 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 14, 2020</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4925</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4924</span>
     </div>
   </div>
 </section>
@@ -211,15 +211,14 @@
 </li>
 </ul>
 <h1 id="什么是event-loop"><a href="#什么是event-loop" class="headerlink" title="什么是event loop"></a>什么是event loop</h1><ul>
-<li>文字解释</li>
-</ul>
+<li><p>文字解释</p>
 <ol>
 <li>即事件循环/事件轮询,js 实现异步的具体解决方案</li>
 <li>同步代码直接执行</li>
 <li>异步函数放在异步队列中</li>
 <li>待同步函数执行完毕，轮询执行 异步队列 的函数</li>
 </ol>
-<ul>
+</li>
 <li><p>实例分析</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">100</span>)<br>&#125;)<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">200</span>)<br><span class="hljs-comment">// 分析以上代码：</span><br><span class="hljs-comment">// 主线程</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">200</span>)<br><span class="hljs-comment">// 异步队列</span><br><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">100</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
 
