@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>异步和单线程 - Hexo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="同步和异步的区别是什么？分别举一个同步和异步的例子同步..."> 
+  
+  <meta name="author" content="aidalee"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_hhodbqn7tit.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: '',
+        default: '万物皆有裂痕，那是光照进来的地方。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        alwaysShow: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">异步和单线程</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">异步和单线程</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 14, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4933</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="同步和异步的区别是什么？分别举一个同步和异步的例子"><a href="#同步和异步的区别是什么？分别举一个同步和异步的例子" class="headerlink" title="同步和异步的区别是什么？分别举一个同步和异步的例子"></a>同步和异步的区别是什么？分别举一个同步和异步的例子</h1><p>同步会阻塞代码执行，而异步不会</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">100</span>)<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">200</span>)<br>&#125;,<span class="hljs-number">1000</span>)<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">300</span>)<br><span class="hljs-comment">// 100 300 200</span><br></code></pre></td></tr></table></figure>
+<h1 id="前端使用异步的场景有哪些"><a href="#前端使用异步的场景有哪些" class="headerlink" title="前端使用异步的场景有哪些"></a>前端使用异步的场景有哪些</h1><ul>
+<li>定时任务：setTimeout、setInterval</li>
+<li>网络请求：ajax 请求、动态<img>加载</li>
+<li>事件绑定</li>
+</ul>
+<h1 id="什么是单线程，和异步有什么关系"><a href="#什么是单线程，和异步有什么关系" class="headerlink" title="什么是单线程，和异步有什么关系"></a>什么是单线程，和异步有什么关系</h1><p>单线程就是同时只做一件事，两段 JS 不能同时执行。原因就是为了避免 DOM 渲染的冲突（因为 js 能改变 dom 结构）。异步是一种“无奈”的解决方案，虽然有很多问题。</p>
+<ul>
+<li><p>概念：单线程-只有一个线程，只能做一件事</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-comment">// 循环运行期间，JS执行和DOM渲染暂时卡顿</span><br>console.<span class="hljs-keyword">log</span>(start)<br><span class="hljs-built_in">var</span> i,<span class="hljs-keyword">sum</span>=<span class="hljs-number">0</span>;<br>for(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">1000000</span>;i++)&#123;<br>    <span class="hljs-keyword">sum</span>+=i;<br>&#125;<br>console.<span class="hljs-keyword">log</span>(<span class="hljs-keyword">sum</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-comment">// alert不处理，JS执行和DOM渲染暂时卡顿</span><br><span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(<span class="hljs-number">1</span>)<br><span class="hljs-selector-tag">alert</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>原因：避免 DOM 渲染的冲突</p>
+<ol>
+<li>浏览器需要渲染 DOM</li>
+<li>JS 可以修改 DOM 结构</li>
+<li>JS 执行的时候，浏览器 DOM 渲染会暂停（如果不暂停，一边渲染一边修改引起冲突）</li>
+<li>两段 JS 也不能同时执行（都修改了 DOM 就冲突了）</li>
+<li>h5 中新增的 webworker 支持多线程，【但是不能访问 DOM】</li>
+</ol>
+</li>
+<li><p>解决方案：异步（但是异步也会带来新的问题，所以有了异步的解决方案 Promise、async、await ）</p>
+<blockquote>
+<p>异步是 js 单线程的一个唯一解决方案</p>
+</blockquote>
+<figure class="highlight irpf90"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs irpf90">console<span class="hljs-number">.</span><span class="hljs-built_in">log</span>(<span class="hljs-number">100</span>)<br>setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;<br>    console<span class="hljs-number">.</span><span class="hljs-built_in">log</span>(<span class="hljs-number">200</span>)<br>&#125;,<span class="hljs-number">1000</span>)<br>console<span class="hljs-number">.</span><span class="hljs-built_in">log</span>(<span class="hljs-number">300</span>)<br>conosle<span class="hljs-number">.</span><span class="hljs-built_in">log</span>(<span class="hljs-number">400</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gams">console.<span class="hljs-built_in">log</span>(<span class="hljs-number">100</span>)<br><span class="hljs-symbol">$</span>.ajax...<br>console.<span class="hljs-built_in">log</span>(<span class="hljs-number">300</span>)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>异步在解决 js 单线程问题的同时也带来了一些问题</p>
+</blockquote>
+<p>  问题一：没有按照书写顺序执行，可读性差<br>  问题二：callback 函数 中不容易模块化</p>
+</li>
+<li><p>实现方式：event loop</p>
+</li>
+</ul>
+<h1 id="什么是event-loop"><a href="#什么是event-loop" class="headerlink" title="什么是event loop"></a>什么是event loop</h1><ul>
+<li><p>文字解释</p>
+<ol>
+<li>即事件循环/事件轮询,js 实现异步的具体解决方案</li>
+<li>同步代码直接执行</li>
+<li>异步函数放在异步队列中</li>
+<li>待同步函数执行完毕，轮询执行 异步队列 的函数</li>
+</ol>
+</li>
+<li><p>实例分析</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">100</span>)<br>&#125;)<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">200</span>)<br><span class="hljs-comment">// 分析以上代码：</span><br><span class="hljs-comment">// 主线程</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">200</span>)<br><span class="hljs-comment">// 异步队列</span><br><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">100</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>&#125;,<span class="hljs-number">100</span>)<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)<br>&#125;)<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>)<br><span class="hljs-comment">// 分析以上代码：</span><br><span class="hljs-comment">// 主线程</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>)<br><span class="hljs-comment">// 异步队列</span><br><span class="hljs-comment">// 立刻被放入</span><br><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)<br>&#125;<br><span class="hljs-comment">// 100ms 之后被放入</span><br><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>&#125;<br><span class="hljs-comment">// 当主进程的3和第二个异步的2都执行完之后，100ms还没到，js引擎会一直轮询（监视着）异步队列，当100ms后1被放入，js引擎会立即将1放入主进程执行。（一直监视，当有异步事件就放入主进程执行）</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>实战代码</li>
+</ul>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs openscad">$.ajax(&#123;<br>    url:&#x27;./data.json&#x27;,<br>    success:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>&#123;</span><br>        console.<span class="hljs-built_in">log</span>(&#x27;a&#x27;)<br>    &#125; <span class="hljs-comment">// ajax请求成功后再放入异步队列</span><br>&#125;)<br>setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>&#123;</span><br>    console.<span class="hljs-built_in">log</span>(&#x27;b)<br>&#125;,<span class="hljs-number">1000</span>) <span class="hljs-comment">// 1000ms之后放入到异步队列</span><br>setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>&#123;</span><br>    console.<span class="hljs-built_in">log</span>(&#x27;c&#x27;)<br>&#125;) <span class="hljs-comment">// 立即放入异步队列</span><br>console.<span class="hljs-built_in">log</span>(&#x27;d&#x27;) <span class="hljs-comment">// 立即执行</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="promise的基本使用和原理"><a href="#promise的基本使用和原理" class="headerlink" title="promise的基本使用和原理"></a>promise的基本使用和原理</h1><ul>
+<li>promise 语法回顾</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadImg</span>(<span class="hljs-params">src</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve,reject</span>)</span>&#123;<br>        <span class="hljs-keyword">var</span> img = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;img&#x27;</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;自定义错误&#x27;</span>)<br>        img.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            resolve(img)<br>        &#125;<br>        img.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            reject(<span class="hljs-string">&#x27;图片加载失败 &#x27;</span>)<br>        &#125;<br>        img.src=src<br>    &#125;)<br>    <span class="hljs-keyword">return</span> promise<br>&#125;<br><span class="hljs-keyword">var</span> src = <span class="hljs-string">&#x27;http://www.imooc.com/static/img/index/logo_new.png&#x27;</span><br><span class="hljs-keyword">var</span> result = loadImg(src)<br><br>result.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">img</span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>, img.width)<br>    <span class="hljs-keyword">return</span> img<br>&#125;,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;failed&#x27;</span>)<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">img</span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>, img.height)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>异常捕获</li>
+</ul>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs scilab"><span class="hljs-comment">// then中只接收一个参数，所有的错误、异常都在catch中捕获</span><br>result.<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>&#123;</span><br>    console.<span class="hljs-built_in">log</span>(<span class="hljs-number">1</span>,img.width)<br>    <span class="hljs-keyword">return</span> img<br>&#125;).<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>&#123;</span><br>    console.<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span>,img.height)<br>&#125;).<span class="hljs-keyword">catch</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ex)</span>&#123;</span><br>    <span class="hljs-comment">// 统一捕获错误</span><br>    console.<span class="hljs-built_in">log</span>(ex)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多个串联</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> src1 = <span class="hljs-string">&#x27;http://www.imooc.com/static/img/index/logo_new.png&#x27;</span><br><span class="hljs-keyword">var</span> result1 = loadImg(src1)<br><span class="hljs-keyword">var</span> src2 = <span class="hljs-string">&#x27;http://www.imooc.com/static/img/index/logo.png&#x27;</span><br><span class="hljs-keyword">var</span> result2 = loadImg(src2)<br><span class="hljs-comment">// 链式操作</span><br>result1.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">img1</span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;第一个图片加载完成&#x27;</span>,img1.width)<br>    <span class="hljs-keyword">return</span> result2 <span class="hljs-comment">// 这里不返回result2的话，那么result1.then()返回的就是result1</span><br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">img2</span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;第二个图片加载完成&#x27;</span>,img2.width)<br>&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ex</span>)</span>&#123;<br>    <span class="hljs-comment">// 最后统一catch</span><br>    <span class="hljs-built_in">console</span>.log(ex)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Promise.all&amp;Promise.race</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// promise.all 接收一个promise对象的数组</span><br><span class="hljs-comment">// 待全部完成之后，统一执行success</span><br><span class="hljs-built_in">Promise</span>.all([result1,result2]).then(<span class="hljs-function"><span class="hljs-params">datas</span>=&gt;</span>&#123;<br>    <span class="hljs-comment">// 接收到的datas是一个数组，依次包含了多个promise返回的内容</span><br>    <span class="hljs-built_in">console</span>.log(datas[<span class="hljs-number">0</span>])<br>    <span class="hljs-built_in">console</span>.log(datas[<span class="hljs-number">1</span>])<br>&#125;)<br><span class="hljs-comment">// Promise.race接收一个包含多个promise对象的数组</span><br><span class="hljs-comment">// 只要有一个完成，就执行success</span><br><span class="hljs-built_in">Promise</span>.race([result1,result2]).then(<span class="hljs-function"><span class="hljs-params">data</span>=&gt;</span>&#123;<br>    <span class="hljs-comment">// data 即最先执行完成的promise的返回值</span><br>    <span class="hljs-built_in">console</span>.log(data)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>状态变化</li>
+</ul>
+<ol>
+<li>三种状态：pending fulfilled rejected</li>
+<li>初始状态是 pending</li>
+<li>pending 变为 fulfilled，或者 pending 变为 rejected。</li>
+<li>状态变化不可逆</li>
+</ol>
+</li>
+<li><p>then</p>
+<ol>
+<li>promise 实例必须实现 then 这个方法</li>
+<li>then()必须可以接收两个函数作为参数</li>
+<li>then()返回的必须是一个 Promise 实例</li>
+</ol>
+</li>
+</ul>
+<h1 id="async-await（和-Promise-的区别、联系）"><a href="#async-await（和-Promise-的区别、联系）" class="headerlink" title="async/await（和 Promise 的区别、联系）"></a>async/await（和 Promise 的区别、联系）</h1><blockquote>
+<p>async/await 是对 Promise 的补充;promise 只是将 callback 拆分了，async/await 是最直接的同步写法</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> load = <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-comment">// await 后跟promise实例</span><br>    <span class="hljs-keyword">const</span> result1 = <span class="hljs-keyword">await</span> loadImg(src1)<br>    <span class="hljs-built_in">console</span>.log(result1)<br>    <span class="hljs-keyword">const</span> result2 = <span class="hljs-keyword">await</span> loadImg(src2)<br>    <span class="hljs-built_in">console</span>.log(result2)<br>&#125;<br>load()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 await,函数必须用 async 标识</li>
+<li>await 后面跟的是一个 Promise 实例</li>
+<li>需要 babel-polyfill</li>
+<li>使用了 Promise,并没有和 Promise 冲突</li>
+<li>完全是同步的写法，再也没有回调函数</li>
+<li>但是：改变不了 JS 单线程、异步的本质</li>
+</ul>
+<h2 id="总结一下当前-JS-解决异步的方案"><a href="#总结一下当前-JS-解决异步的方案" class="headerlink" title="总结一下当前 JS 解决异步的方案"></a>总结一下当前 JS 解决异步的方案</h2><ul>
+<li>jQuery Deferred</li>
+<li>Promise</li>
+<li>Async/Await</li>
+<li>Generator (es6 中的一种方案，原理比较复杂，不是异步的直接替代方式，有更好更简洁的解决方案 async/await)</li>
+</ul>
+<h2 id="何时需要异步"><a href="#何时需要异步" class="headerlink" title="何时需要异步"></a>何时需要异步</h2><ul>
+<li>在可能发生等待的情况</li>
+<li>等待过程中不能像 alert 一样阻塞程序运行</li>
+<li>因此，所有的“等待的情况都需要异步”</li>
+</ul>
+<h2 id="前端使用异步的场景"><a href="#前端使用异步的场景" class="headerlink" title="前端使用异步的场景"></a>前端使用异步的场景</h2><ul>
+<li>定时任务：setTimeout、setInterval</li>
+<li>网络请求：ajax 请求、动态<img>加载</li>
+<li>回调函数</li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>aidalee</li>
+  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/10/14/%E5%BC%82%E6%AD%A5%E5%92%8C%E5%8D%95%E7%BA%BF%E7%A8%8B/index.html">https://aidalee.github.io/2020/10/14/%E5%BC%82%E6%AD%A5%E5%92%8C%E5%8D%95%E7%BA%BF%E7%A8%8B/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+        
+<nav class="nav">
+  
+  
+    <a href="/2020/10/14/typescript%E5%85%A5%E9%97%A8/">typescript入门<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: "abcdefg"
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
