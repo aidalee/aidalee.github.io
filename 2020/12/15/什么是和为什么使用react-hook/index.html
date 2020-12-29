@@ -7,15 +7,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>git常用命令 - Hexo</title>
+  <title>什么是和为什么使用react hook - Hexo</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
-  <meta name="description" content="提交代码流程
-从 master 分支开出新分支 fea..."> 
+  <meta name="description" content="什么是react hook
+React 16.8带来的..."> 
   
   <meta name="author" content="aidalee"> 
 
@@ -107,7 +107,7 @@
 
 <nav class="navbar">
   <div class="left"></div>
-  <div class="center">git常用命令</div>
+  <div class="center">什么是和为什么使用react hook</div>
   <div class="right">
     <i class="iconfont iconmenu j-navbar-menu"></i>
   </div>
@@ -161,66 +161,42 @@
     <section class="head">
   <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">git常用命令</h1>
+    <h1 class="head-title">什么是和为什么使用react hook</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 15, 2020</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1247</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1548</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h1 id="提交代码流程"><a href="#提交代码流程" class="headerlink" title="提交代码流程"></a>提交代码流程</h1><ol>
-<li><p>从 master 分支开出新分支 feature/example：git checkout -b feature/example</p>
-</li>
-<li><p>将此feature分支推送到远端： git push –set-upstream origin feature/example</p>
-</li>
-<li><p>查看此分支git状态：git status</p>
-</li>
-<li><p>查看分支改动的详细代码：git diff</p>
-</li>
-<li><p>将改动文件从工作区添加到暂存区：git add .</p>
-</li>
-<li><p>将改动文件从暂存区提交到当前分支：git commit -m ‘xxx’</p>
-</li>
-<li><p>5和6两步可以合写为： git commit -am ‘xxx’</p>
-</li>
-<li><p>将分支改动推送到远端：git push</p>
-</li>
-<li><p>将分支发到测试环境：先切到测试分支develop, 比较分支的文件差异 – git diff feature/example( 审查代码 防止出错 ) 再合并：git merge feature/example –no-ff 最后再 git push 推送到远端</p>
-</li>
-<li><p>分支发到预发或线上环境同上</p>
-</li>
+        <h1 id="什么是react-hook"><a href="#什么是react-hook" class="headerlink" title="什么是react hook"></a>什么是react hook</h1><ul>
+<li>React 16.8带来的全新特性，即将替代class组件的写法。（react有class组件和函数式组件两种）。hook是一个特殊的函数，可以让你勾入react特性。<h1 id="使用hook解决的问题"><a href="#使用hook解决的问题" class="headerlink" title="使用hook解决的问题"></a>使用hook解决的问题</h1></li>
+</ul>
+<ol>
+<li>组件很难复用状态逻辑（hook之前使用hoc或者是render Props解决）</li>
+<li>复杂组件难以理解，尤其是生命周期函数<h1 id="什么时候会用useState-Hook？"><a href="#什么时候会用useState-Hook？" class="headerlink" title="什么时候会用useState Hook？"></a>什么时候会用useState Hook？</h1><blockquote>
+<p> 函数式组件中想使用state时..用于记录/改变组件状态值。</p>
+</blockquote>
+<h1 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook"></a>Effect Hook</h1></li>
 </ol>
-<h1 id="撤回相关"><a href="#撤回相关" class="headerlink" title="撤回相关"></a>撤回相关</h1><ol start="11">
-<li><p>5步添加之前想撤销所有提交：git checkout .</p>
+<ul>
+<li>无需清除的副作用<blockquote>
+<p>ajax请求、dom操作等</p>
+</blockquote>
 </li>
-<li><p>5步添加之后想要撤销提交：git reset .</p>
+<li>需要清除的副作用<blockquote>
+<p>dom事件监听等。 在effect中返回清除effect的函数</p>
+</blockquote>
 </li>
-<li><p>6步commit之后想撤回：先 git reset HEAD~1 然后 强推到远端 git push origin feature/example –force</p>
+<li>控制effect的执行（解决一些性能问题）<blockquote>
+<p>effect传递第二个参数（数组类型deps[]）, [] 只执行一次effect，</p>
+</blockquote>
 </li>
-<li><p>想撤销某个版本commit：git revert -m 1 版本号 参考：<a target="_blank" rel="noopener" href="https://blog.justwe.site/post/git-revert/">记一次git revert的经历</a></p>
-</li>
-<li><p>merge到dev分支之后想撤回合并：先切到dev分支：git checkout develop, 查出要回退的版本号：git log或者git reflog, 最后 git reset –mixed 版本号</p>
-</li>
-</ol>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>查看所有分支：git branch -a</p>
-<p>删除本地分支：git branch -d feature/example</p>
-<p>删除远程分支：第一步：git branch -r -d origin/feature/example 第二步：git push origin :feature/example</p>
-<p>查看命令树：git log –oneline –graph –decorate –all</p>
-<p>合并到master有冲突时，在当前要合并的分支执行git pull origin master然后在当前分支解决冲突</p>
-<p>rebase: <a target="_blank" rel="noopener" href="http://gitbook.liuhui998.com/4_2.html">rebase</a></p>
-<p>详细学习: <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰</a></p>
-<h1 id="github-导入本地项目"><a href="#github-导入本地项目" class="headerlink" title="github 导入本地项目"></a>github 导入本地项目</h1><ol>
-<li>本地根目录使用git init 或脚手架初始化项目</li>
-<li>提交代码到暂存区 git add .</li>
-<li>提交 git commit -m”description”</li>
-<li>关联远程仓库 git remote add origin +地址</li>
-<li>远程仓库同步 git pull –rebase origin master</li>
-<li>推送到github (前提是远程仓库有同名的项目) git push -u origin master</li>
-</ol>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React, &#123; useRef, forwardRef, useImperativeHandle &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span><br><br><span class="hljs-keyword">const</span> App = forwardRef(<span class="hljs-function">(<span class="hljs-params">props,ref</span>) =&gt;</span> &#123;<br><br>    <span class="hljs-keyword">const</span> inputRef = useRef()<br><br>    useImperativeHandle(ref,<span class="hljs-function">()=&gt;</span>(&#123;<br>        focus : <span class="hljs-function">() =&gt;</span>&#123;<br>            inputRef.current.focus()<br>        &#125;<br>    &#125;),[inputRef])<br>    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&#123;inputRef&#125;/</span>&gt;</span></span><br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Father</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> inputRef = useRef()<br>   <br>    <span class="hljs-keyword">return</span> (<br>        &lt;div&gt;<br>            &lt;App ref=&#123;inputRef&#125;/&gt;<br>            &lt;button onClick=&#123;<span class="hljs-function"><span class="hljs-params">e</span>=&gt;</span>inputRef.current.focus()&#125;&gt;获取焦点&lt;/button&gt;<br>        &lt;/div&gt;<br>    )<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> url = <span class="hljs-string">&#x27;http://api.douban.com/v2/movie/in_theaters&#x27;</span>;<br>    <span class="hljs-keyword">const</span> [isLoading, response, error] = useAxios(url, []);<br><br>    <span class="hljs-keyword">return</span> (<br>        &lt;div&gt;<br>            &#123;isLoading ? <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> :<br>                (error ? <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span> There is an error happened <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> : <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span> Success, &#123;response&#125; <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>)&#125;<br>        &lt;/div&gt;<br>    )<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;<br><br></code></pre></td></tr></table></figure>
 
       </section>
       <section class="extra">
@@ -228,7 +204,7 @@
         <ul class="copyright">
   
   <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">https://aidalee.github.io/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html</a></li>
+  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/12/15/%E4%BB%80%E4%B9%88%E6%98%AF%E5%92%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8react-hook/index.html">https://aidalee.github.io/2020/12/15/%E4%BB%80%E4%B9%88%E6%98%AF%E5%92%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8react-hook/index.html</a></li>
   <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
       rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
   
@@ -246,15 +222,15 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
 
         
 <nav class="nav">
   
-    <a href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/"><i class="iconfont iconleft"></i>md基本常用语法</a>
+    <a href="/2020/12/18/react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91/"><i class="iconfont iconleft"></i>react组件库开发</a>
   
   
-    <a href="/2020/10/01/hello-world/">Hello World<i class="iconfont iconright"></i></a>
+    <a href="/2020/10/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化<i class="iconfont iconright"></i></a>
   
 </nav>
 

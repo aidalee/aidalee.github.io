@@ -7,15 +7,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>git常用命令 - Hexo</title>
+  <title>react组件库开发 - Hexo</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
-  <meta name="description" content="提交代码流程
-从 master 分支开出新分支 fea..."> 
+  <meta name="description" content="环境配置
+安装脚手架工具create-react-ap..."> 
   
   <meta name="author" content="aidalee"> 
 
@@ -107,7 +107,7 @@
 
 <nav class="navbar">
   <div class="left"></div>
-  <div class="center">git常用命令</div>
+  <div class="center">react组件库开发</div>
   <div class="right">
     <i class="iconfont iconmenu j-navbar-menu"></i>
   </div>
@@ -161,66 +161,53 @@
     <section class="head">
   <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">git常用命令</h1>
+    <h1 class="head-title">react组件库开发</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 18, 2020</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1247</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1519</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h1 id="提交代码流程"><a href="#提交代码流程" class="headerlink" title="提交代码流程"></a>提交代码流程</h1><ol>
-<li><p>从 master 分支开出新分支 feature/example：git checkout -b feature/example</p>
+        <h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><ul>
+<li>安装脚手架工具create-react-app</li>
+<li>安装ts</li>
+<li>有ts 的加持，代码自动提示补全接口定义的属性，使用时错误属性类型有提示。<h1 id="组件测试"><a href="#组件测试" class="headerlink" title="组件测试"></a>组件测试</h1><a target="_blank" rel="noopener" href="https://jestjs.io/docs/en/getting-started">https://jestjs.io/docs/en/getting-started</a></li>
+<li>为什么要组件测试？ 没有组件测试 就要手动创建很多各种不同类型和状态的组件肉眼观察是否符合预期，这样效率低易出错,组件的更改维护困难。测试可以保证代码可以运行并且没有bug.更早的解决bug..重构升级更加容易、可靠。让开发流程更加敏捷。</li>
+<li>通用测试框架jest。汲取了之前测试框架的优点，也内置了自己具有的一些特色，同时也是create react app默认的测试框架。<blockquote>
+<p>参看文档介绍一些API的使用</p>
+</blockquote>
 </li>
-<li><p>将此feature分支推送到远端： git push –set-upstream origin feature/example</p>
-</li>
-<li><p>查看此分支git状态：git status</p>
-</li>
-<li><p>查看分支改动的详细代码：git diff</p>
-</li>
-<li><p>将改动文件从工作区添加到暂存区：git add .</p>
-</li>
-<li><p>将改动文件从暂存区提交到当前分支：git commit -m ‘xxx’</p>
-</li>
-<li><p>5和6两步可以合写为： git commit -am ‘xxx’</p>
-</li>
-<li><p>将分支改动推送到远端：git push</p>
-</li>
-<li><p>将分支发到测试环境：先切到测试分支develop, 比较分支的文件差异 – git diff feature/example( 审查代码 防止出错 ) 再合并：git merge feature/example –no-ff 最后再 git push 推送到远端</p>
-</li>
-<li><p>分支发到预发或线上环境同上</p>
-</li>
+<li>react专用测试工具-react-testing-library 用以可以将react 的component（组件）渲染或者说是挂载到测试用例上。react 官方文档首推React Testing Library。作为默认的测试工具。<h1 id="什么是Storybook-—用于调试预览"><a href="#什么是Storybook-—用于调试预览" class="headerlink" title="什么是Storybook —用于调试预览"></a>什么是Storybook —用于调试预览</h1><a target="_blank" rel="noopener" href="https://storybook.js.org/docs/react/get-started/introduction">https://storybook.js.org/docs/react/get-started/introduction</a><br>丰富的插件生态系统可帮助您测试，记录和优化故事。您也可以创建一个插件来满足您的工作流程要求</li>
+<li>create-react-app 入口文件不适合管理组件库</li>
+<li>缺少行为追踪和属性调试功能</li>
+<li>安装storybook:  npx sb init<h2 id="组件完美开发工具应有的特点"><a href="#组件完美开发工具应有的特点" class="headerlink" title="组件完美开发工具应有的特点"></a>组件完美开发工具应有的特点</h2></li>
+</ul>
+<ol>
+<li>分开展示各个组件不同属性下的状态</li>
+<li>能追踪组件的行为并且具有属性调试功能</li>
+<li>可以为组件自动生成文档和属性列表<h2 id="storybook的一大亮点之：插件系统"><a href="#storybook的一大亮点之：插件系统" class="headerlink" title="storybook的一大亮点之：插件系统"></a>storybook的一大亮点之：插件系统</h2></li>
 </ol>
-<h1 id="撤回相关"><a href="#撤回相关" class="headerlink" title="撤回相关"></a>撤回相关</h1><ol start="11">
-<li><p>5步添加之前想撤销所有提交：git checkout .</p>
-</li>
-<li><p>5步添加之后想要撤销提交：git reset .</p>
-</li>
-<li><p>6步commit之后想撤回：先 git reset HEAD~1 然后 强推到远端 git push origin feature/example –force</p>
-</li>
-<li><p>想撤销某个版本commit：git revert -m 1 版本号 参考：<a target="_blank" rel="noopener" href="https://blog.justwe.site/post/git-revert/">记一次git revert的经历</a></p>
-</li>
-<li><p>merge到dev分支之后想撤回合并：先切到dev分支：git checkout develop, 查出要回退的版本号：git log或者git reflog, 最后 git reset –mixed 版本号</p>
-</li>
+<ul>
+<li>插件之文档插件 yarn add @storybook/addon-info -D。两种使用方式：全局使用和stories中使用。<blockquote>
+<p>stoties中使用</p>
+</blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">import</span> &#123; <span class="hljs-attribute">withInfo</span> &#125; from <span class="hljs-string">&#x27;<span class="hljs-variable">@storybook</span>/addon-info&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="自动生成文档–添加react-docgen-typescript-配合react-docgen-typescript-loader"><a href="#自动生成文档–添加react-docgen-typescript-配合react-docgen-typescript-loader" class="headerlink" title="自动生成文档–添加react-docgen-typescript 配合react-docgen-typescript-loader"></a>自动生成文档–添加react-docgen-typescript 配合react-docgen-typescript-loader</h2></li>
+</ul>
+<h1 id="javascript-模块化发展历史"><a href="#javascript-模块化发展历史" class="headerlink" title="javascript 模块化发展历史"></a>javascript 模块化发展历史</h1><h1 id="模块打包—根目录新建tsconfig-build-json-tsconfig配置项：https-www-typescriptlang-org-tsconfig"><a href="#模块打包—根目录新建tsconfig-build-json-tsconfig配置项：https-www-typescriptlang-org-tsconfig" class="headerlink" title="模块打包—根目录新建tsconfig.build.json  (tsconfig配置项：https://www.typescriptlang.org/tsconfig)"></a>模块打包—根目录新建tsconfig.build.json  (tsconfig配置项：<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/tsconfig">https://www.typescriptlang.org/tsconfig</a>)</h1><h1 id="npm-link-创建软链接，在本地测试组件库"><a href="#npm-link-创建软链接，在本地测试组件库" class="headerlink" title="npm link 创建软链接，在本地测试组件库."></a>npm link 创建软链接，在本地测试组件库.</h1><h1 id="npm-link-react-com-lt-组件库名-gt-在需要使用react组件库的项目中创建软链接链接组件库"><a href="#npm-link-react-com-lt-组件库名-gt-在需要使用react组件库的项目中创建软链接链接组件库" class="headerlink" title="npm link react-com&lt;组件库名&gt;在需要使用react组件库的项目中创建软链接链接组件库"></a>npm link react-com&lt;组件库名&gt;在需要使用react组件库的项目中创建软链接链接组件库</h1><h1 id="再创建一个项目-引入组件库-并测试使用"><a href="#再创建一个项目-引入组件库-并测试使用" class="headerlink" title="再创建一个项目 引入组件库 并测试使用"></a>再创建一个项目 引入组件库 并测试使用</h1><h1 id="发布包到npm"><a href="#发布包到npm" class="headerlink" title="发布包到npm"></a>发布包到npm</h1><ol>
+<li>将自己编写的包或者命令行程序上传到npm服务器<br>npm whoami 检测是否登录，否：npm adduser来注册或者登录账户<br>npm config ls 查看登录信息<br>如果使用了代理 则需要将代理切换到默认的npm源 npm config set registry <a target="_blank" rel="noopener" href="https://registry.npmjs.org/">https://registry.npmjs.org</a></li>
+<li>版本号规则 <a target="_blank" rel="noopener" href="https://semver.org/lang/zh-CN/">https://semver.org/lang/zh-CN/</a>    <a target="_blank" rel="noopener" href="https://souche.yuque.com/bggh1p/8961260/ys5fn2">https://souche.yuque.com/bggh1p/8961260/ys5fn2</a><br>版本格式：主版本号.次版本号.修订号  </li>
 </ol>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>查看所有分支：git branch -a</p>
-<p>删除本地分支：git branch -d feature/example</p>
-<p>删除远程分支：第一步：git branch -r -d origin/feature/example 第二步：git push origin :feature/example</p>
-<p>查看命令树：git log –oneline –graph –decorate –all</p>
-<p>合并到master有冲突时，在当前要合并的分支执行git pull origin master然后在当前分支解决冲突</p>
-<p>rebase: <a target="_blank" rel="noopener" href="http://gitbook.liuhui998.com/4_2.html">rebase</a></p>
-<p>详细学习: <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰</a></p>
-<h1 id="github-导入本地项目"><a href="#github-导入本地项目" class="headerlink" title="github 导入本地项目"></a>github 导入本地项目</h1><ol>
-<li>本地根目录使用git init 或脚手架初始化项目</li>
-<li>提交代码到暂存区 git add .</li>
-<li>提交 git commit -m”description”</li>
-<li>关联远程仓库 git remote add origin +地址</li>
-<li>远程仓库同步 git pull –rebase origin master</li>
-<li>推送到github (前提是远程仓库有同名的项目) git push -u origin master</li>
-</ol>
+<ul>
+<li>主版本号：当你做了不兼容的 API 修改</li>
+<li>次版本号：当你做了向下兼容的功能性新增</li>
+<li>修订号：当你做了向下兼容的问题修正</li>
+<li>先行版本号及版本编译元数据可以加到“主版本号.次版本号.修订号”的后面，作为延伸</li>
+</ul>
 
       </section>
       <section class="extra">
@@ -228,7 +215,7 @@
         <ul class="copyright">
   
   <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">https://aidalee.github.io/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html</a></li>
+  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/12/18/react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91/index.html">https://aidalee.github.io/2020/12/18/react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91/index.html</a></li>
   <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
       rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
   
@@ -246,15 +233,15 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
 
         
 <nav class="nav">
   
-    <a href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/"><i class="iconfont iconleft"></i>md基本常用语法</a>
+    <a href="/2020/12/28/tsconfig/"><i class="iconfont iconleft"></i></a>
   
   
-    <a href="/2020/10/01/hello-world/">Hello World<i class="iconfont iconright"></i></a>
+    <a href="/2020/12/15/%E4%BB%80%E4%B9%88%E6%98%AF%E5%92%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8react-hook/">什么是和为什么使用react hook<i class="iconfont iconright"></i></a>
   
 </nav>
 
