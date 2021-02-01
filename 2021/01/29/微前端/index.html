@@ -7,14 +7,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title> - Hexo</title>
+  <title>微前端 - Hexo</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
-  <meta name="description" content="{&#34;name&#34;:&#34;react-com&#34;,&#34;versio..."> 
+  <meta name="description" content="https://woai3c.gitee.io/int..."> 
   
   <meta name="author" content="aidalee"> 
 
@@ -104,6 +104,14 @@
   
 
 
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">微前端</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
   <nav class="menu">
   <div class="menu-wrap">
     <div class="menu-close">
@@ -152,25 +160,38 @@
     <section class="head">
   <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title"></h1>
+    <h1 class="head-title">微前端</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 28, 2020</span
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>January 29, 2021</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1682</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>239</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        {"name":"react-com","version":"0.1.0","private":true,"dependencies":{"@babel/core":"^7.0.0","@fortawesome/fontawesome-svg-core":"^1.2.32","@fortawesome/free-solid-svg-icons":"^5.15.1","@fortawesome/react-fontawesome":"^0.1.13","@testing-library/dom":"^7.28.1","@testing-library/jest-dom":"^5.11.4","@testing-library/react":"^11.1.0","@testing-library/user-event":"^12.1.10","@types/classnames":"^2.2.11","@types/jest":"^26.0.15","@types/node":"^12.0.0","@types/react":"^16.9.53","@types/react-dom":"^16.9.8","@types/react-transition-group":"^4.4.0","@types/storybook__addon-info":"^5.2.3","classnames":"^2.2.6","node-sass":"^4.13.0","react":"^17.0.1","react-docgen-typescript-loader":"^3.7.2","react-dom":"^17.0.1","react-scripts":"4.0.1","react-transition-group":"^4.4.1","regenerator-runtime":"^0.13.7","typescript":"^4.0.3","web-vitals":"^0.2.4","webpack":"^5.11.0"},"scripts":{"start":"react-scripts start","build":"react-scripts build","test":"react-scripts test","eject":"react-scripts eject","storybook":"start-storybook -p 6006 -s public","build-storybook":"build-storybook -s public","build-ts":"tsc -p tsconfig.build.json"},"eslintConfig":{"extends":["react-app","react-app/jest"]},"browserslist":{"production":[">0.2%","not dead","not op_mini all"],"development":["last 1 chrome version","last 1 firefox version","last 1 safari version"]},"devDependencies":{"@storybook/addon-actions":"^6.1.10","@storybook/addon-essentials":"^6.1.10","@storybook/addon-info":"^5.3.21","@storybook/addon-links":"^6.1.10","@storybook/node-logger":"^6.1.10","@storybook/preset-create-react-app":"^3.1.5","@storybook/react":"^6.1.10"},"resolutions":{"@storybook/react/babel-loader":"8.1.0"}}
+        <p><a target="_blank" rel="noopener" href="https://woai3c.gitee.io/introduction-to-front-end-engineering/">https://woai3c.gitee.io/introduction-to-front-end-engineering/</a><br><a target="_blank" rel="noopener" href="https://tech.antfin.com/community/articles/536">https://tech.antfin.com/community/articles/536</a></p>
+<h1 id="创建微前端应用示例"><a href="#创建微前端应用示例" class="headerlink" title="创建微前端应用示例"></a>创建微前端应用示例</h1><ul>
+<li>这个微前端应用由三部分组成：</li>
+</ul>
+<ol>
+<li>main：主应用，使用 vue-cli 创建</li>
+<li>vue：子应用，使用 vue-cli 创建</li>
+<li>react: 子应用，使用的 react 16 版本</li>
+</ol>
+<ul>
+<li>对应的目录如下：<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-deletion">-main</span><br><span class="hljs-deletion">-vue</span><br><span class="hljs-deletion">-react</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+
       </section>
       <section class="extra">
         
         <ul class="copyright">
   
   <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/12/28/tsconfig/index.html">https://aidalee.github.io/2020/12/28/tsconfig/index.html</a></li>
+  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2021/01/29/%E5%BE%AE%E5%89%8D%E7%AB%AF/index.html">https://aidalee.github.io/2021/01/29/%E5%BE%AE%E5%89%8D%E7%AB%AF/index.html</a></li>
   <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
       rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
   
@@ -188,13 +209,13 @@
 </section>
         
         
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" rel="tag">前端工程化</a></li></ul>
+
         
 <nav class="nav">
   
-    <a href="/2021/01/29/%E5%BE%AE%E5%89%8D%E7%AB%AF/"><i class="iconfont iconleft"></i>微前端</a>
   
-  
-    <a href="/2020/12/18/react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91/">react组件库开发<i class="iconfont iconright"></i></a>
+    <a href="/2020/12/28/tsconfig/"><i class="iconfont iconright"></i></a>
   
 </nav>
 
