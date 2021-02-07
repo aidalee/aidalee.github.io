@@ -165,7 +165,7 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>January 29, 2021</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>239</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>455</span>
     </div>
   </div>
 </section>
@@ -182,8 +182,12 @@
 </ol>
 <ul>
 <li>对应的目录如下：<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-deletion">-main</span><br><span class="hljs-deletion">-vue</span><br><span class="hljs-deletion">-react</span><br></code></pre></td></tr></table></figure>
-</li>
+<h1 id="微前端架构设计"><a href="#微前端架构设计" class="headerlink" title="微前端架构设计"></a>微前端架构设计</h1></li>
+<li>构建基础设施：<br>• 组件和模式库。常用工具函数封装，UI 组件库<br>• 应用通信机制。<br>• 数据共享机制。通用的数据应该共享。<br>• 可选。构建系统</li>
+<li>应用通信机制<br>同级，可以封装发布-订阅模式组件。自定义全局事件。<br>父子。postMessage parent.window</li>
+<li>数据共享机制<br>• URL 参数传递<br>• localstorage<br>• indexedDB<br>• 后端存储</li>
 </ul>
+<h1 id="微前端框架"><a href="#微前端框架" class="headerlink" title="微前端框架"></a>微前端框架</h1><p><a target="_blank" rel="noopener" href="https://single-spa.js.org/">https://single-spa.js.org/</a></p>
 
       </section>
       <section class="extra">
@@ -213,6 +217,8 @@
 
         
 <nav class="nav">
+  
+    <a href="/2021/02/07/vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"><i class="iconfont iconleft"></i>vue源码解析</a>
   
   
     <a href="/2020/12/28/tsconfig/"><i class="iconfont iconright"></i></a>
