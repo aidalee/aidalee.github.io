@@ -165,7 +165,7 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 03, 2020</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>825</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>824</span>
     </div>
   </div>
 </section>
@@ -184,7 +184,7 @@
 </ul>
 <p>当一个块或者一个函数嵌套在另一个块或者函数中时，就发生了作用域的嵌套。在查找变量的过程中，层层递进的作用域，就形成了一条作用域链</p>
 <h1 id="理解闭包"><a href="#理解闭包" class="headerlink" title="理解闭包"></a>理解闭包</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addABC</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>,b = <span class="hljs-number">2</span>;<br>  <br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> a+b+c;<br>  &#125;<br>  <span class="hljs-keyword">return</span> add;<br>&#125;<br><br><span class="hljs-keyword">var</span> c = <span class="hljs-number">3</span><br><br><span class="hljs-keyword">var</span> globalAdd = addABC()<br><br><span class="hljs-built_in">console</span>.log(globalAdd()) <span class="hljs-comment">// 6</span><br><br></code></pre></td></tr></table></figure>
-<p>其中 add 这个函数，它嵌套在函数 addABC 的内部，想要查找 a、b、c 三个变量，它得去上层的 addABC 作用域里找，像 a、b、c 这样在函数中被使用，但它既不是函数参数、也不是函数的局部变量，而是一个不属于当前作用域的变量，此时它相对于当前作用域来说，就是一个自由变量。而像 add 这样引用了自由变量的函数，就叫闭包。(或者说阮读取其他函数内部变量的函数就是闭包)</p>
+<p>其中 add 这个函数，它嵌套在函数 addABC 的内部，想要查找 a、b、c 三个变量，它得去上层的 addABC 作用域里找，像 a、b、c 这样在函数中被使用，但它既不是函数参数、也不是函数的局部变量，而是一个不属于当前作用域的变量，此时它相对于当前作用域来说，就是一个自由变量。而像 add 这样引用了自由变量的函数，就叫闭包。(或者说读取其他函数内部变量的函数就是闭包)</p>
 
       </section>
       <section class="extra">
