@@ -7,15 +7,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>移动端调试与抓包 - Hexo</title>
+  <title>自动化测试简介 - Hexo</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
-  <meta name="description" content="移动端调试
-Chrome 扩展插件 Quick QR生..."> 
+  <meta name="description" content="在当前 DevOps 的趋势下，持续集成（CI）和持续..."> 
   
   <meta name="author" content="aidalee"> 
 
@@ -107,7 +106,7 @@ Chrome 扩展插件 Quick QR生...">
 
 <nav class="navbar">
   <div class="left"></div>
-  <div class="center">移动端调试与抓包</div>
+  <div class="center">自动化测试简介</div>
   <div class="right">
     <i class="iconfont iconmenu j-navbar-menu"></i>
   </div>
@@ -161,26 +160,29 @@ Chrome 扩展插件 Quick QR生...">
     <section class="head">
   <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">移动端调试与抓包</h1>
+    <h1 class="head-title">自动化测试简介</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 01, 2021</span
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 06, 2021</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>470</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1619</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h1 id="移动端调试"><a href="#移动端调试" class="headerlink" title="移动端调试"></a>移动端调试</h1><ol>
-<li>Chrome 扩展插件 Quick QR生成页面二维码 扫描后在手机端调试</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/liriliri/eruda">https://github.com/liriliri/eruda</a><blockquote>
-<p>进行移动端网页开发时，想要查看手机浏览器信息从来都不是一件容易的事。特别是当目标环境为APP内置WebView，需要调用特定的JsBridge接口时，你根本都干不了什么，只能一遍又一遍地修改代码，重新打开页面并alert一下。eruda可以用于此类情景的调试工作。</p>
-</blockquote>
-<h1 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h1></li>
-<li>抓包工具<br>charles <a target="_blank" rel="noopener" href="https://www.charlesproxy.com/">https://www.charlesproxy.com/</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mawenqiangios/p/8270238.html">https://www.cnblogs.com/mawenqiangios/p/8270238.html</a><br>手机和pc处于同一网络<br>手动设置代理 主机名为pc主机ip<br>端口默认8888<h1 id="qrcode生成二维码-手机查看demo"><a href="#qrcode生成二维码-手机查看demo" class="headerlink" title="qrcode生成二维码 手机查看demo"></a>qrcode生成二维码 手机查看demo</h1>import QRCode from ‘qrcodejs2’;</li>
-</ol>
-<h1 id="公司vue组件库开发"><a href="#公司vue组件库开发" class="headerlink" title="公司vue组件库开发"></a>公司vue组件库开发</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34168880/article/details/88754816">https://blog.csdn.net/weixin_34168880/article/details/88754816</a></p>
+        <p>在当前 DevOps 的趋势下，持续集成（CI）和持续部署（CD）具有支柱性地位，那么能够成功搭建 CI/CD 流水线就至关重要了。在介绍 CI/CD 流水线的工作原理之前，我们先了解一下什么是 DevOps。</p>
+<h1 id="什么是-DevOps？"><a href="#什么是-DevOps？" class="headerlink" title="什么是 DevOps？"></a>什么是 DevOps？</h1><p>DevOps 是一种软件开发方法。它将持续开发、持续测试、持续集成、持续部署和持续监控贯穿于软件开发的整个生命周期。当前几乎所有的顶尖公司均采用了该方法，用以提高软件开发质量，并缩短软件开发生命周期。从而以达到每个公司对软件产品的期望，交付出客户最满意的产品。</p>
+<h1 id="什么是-CI-CD-流水线？"><a href="#什么是-CI-CD-流水线？" class="headerlink" title="什么是 CI/CD 流水线？"></a>什么是 CI/CD 流水线？</h1><p>CI 代表持续集成（Continuous Integration），CD 代表持续交付（Continuous Delivery）和持续部署（Continuous Deployment）。也可以将它们看作是类似于软件开发生命周期的过程<br>假如我们要构建一款 Web 应用程序，并将它部署在一个现场 Web 服务器上。同时我们有一组开发人员，他们主要负责编写代码，并将代码构建为 Web 应用程序。假设现在开发团队已经将代码提交到版本控制系统（如：Git，SVN）中了。</p>
+<h1 id="构建阶段"><a href="#构建阶段" class="headerlink" title="构建阶段"></a>构建阶段</h1><p>接下来，代码将会经历构建阶段，这也是 CI/CD 流水线的第一阶段。在此之前，开发者已经将他们的代码加上合适的标签，并提交到版本控制系统中了。<br>假如我们采用的是 Java 语言，那么还需要先进行代码编译。因此，代码在通过版本控制阶段之后，会先在构建阶段予以编译。该阶段会从代码库的各个分支中获取到所有的功能代码，合并后最终通过一个编译器来编译它们。这整个过程都被称为「构建阶段」。</p>
+<h1 id="测试阶段"><a href="#测试阶段" class="headerlink" title="测试阶段"></a>测试阶段</h1><p>构建阶段结束后，将会继续进入到代码的「测试阶段」。在这个阶段中，我们会进行各种各样的测试，单元测试就是其中之一。在该阶段中，我们会测试代码中多个组件间的关系或者单个组件的功能，同时也会进行软件的可用性测试。</p>
+<h1 id="部署阶段"><a href="#部署阶段" class="headerlink" title="部署阶段"></a>部署阶段</h1><p>测试阶段完成后，就要进入「部署阶段」了。在该阶段，代码将会被部署到准生产环境服务器（staging server）或者测试环境服务器（test server）中。同时在该阶段中，我们既可以查看程序代码，也可以在模拟器中运行该应用程序。</p>
+<h1 id="自动测试阶段"><a href="#自动测试阶段" class="headerlink" title="自动测试阶段"></a>自动测试阶段</h1><p>只要我们的代码部署成功，我们就可以运行另一组可用性测试了。该阶段结束后，如果所有的测试都通过了，那么就可以将其部署到生产环境中了。</p>
+<h1 id="部署到生产环境"><a href="#部署到生产环境" class="headerlink" title="部署到生产环境"></a>部署到生产环境</h1><p>另外值得一提的是我们可能在每一个阶段的执行过程中遇到一些错误。在这种情况下，我们可以将错误邮件发回到开发团队中，以便他们能够及时修复这些错误。当开发团队修复完成后，就可以将代码重新提交到版本控制系统中，然后再次从头开始执行该流水线。<br>如果在执行测试的过程中遇到了任何错误，那么这些错误也将反馈给开发团队，等他们修复完成后，同样会再次触发该流水线，进行新一轮的持续迭代。</p>
+<h1 id="度量和验证阶段"><a href="#度量和验证阶段" class="headerlink" title="度量和验证阶段"></a>度量和验证阶段</h1><p>因此，整个生命周期将会继续迭代下去，直到我们得到可以直接部署到生产环境中的代码或者产品。除此之外，在生产环境中我们还需要对代码进行度量和验证，以实时监控应用的线上运行状态。<br>FLOW平台：<a target="_blank" rel="noopener" href="http://flow.dasouche-inc.net/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8D/home">http://flow.dasouche-inc.net/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8D/home</a></p>
+<h1 id="java工程："><a href="#java工程：" class="headerlink" title="java工程："></a>java工程：</h1><p>传入参数并触发自动化脚本执行<br>报告：<br>错误信息查看：</p>
+<h1 id="mock环境："><a href="#mock环境：" class="headerlink" title="mock环境："></a>mock环境：</h1><p><a target="_blank" rel="noopener" href="http://jenkins.stable.dasouche.net/view/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8Dmock%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">http://jenkins.stable.dasouche.net/view/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8Dmock%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/</a></p>
+<h1 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h1><p><a target="_blank" rel="noopener" href="http://flow.dasouche-inc.net/docs/join-guide.html#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87">http://flow.dasouche-inc.net/docs/join-guide.html#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87</a></p>
 
       </section>
       <section class="extra">
@@ -188,7 +190,7 @@ Chrome 扩展插件 Quick QR生...">
         <ul class="copyright">
   
   <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2021/03/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E4%B8%8E%E6%8A%93%E5%8C%85/index.html">https://aidalee.github.io/2021/03/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E4%B8%8E%E6%8A%93%E5%8C%85/index.html</a></li>
+  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2021/03/06/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/index.html">https://aidalee.github.io/2021/03/06/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/index.html</a></li>
   <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
       rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
   
@@ -206,15 +208,11 @@ Chrome 扩展插件 Quick QR生...">
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a></li></ul>
-
         
 <nav class="nav">
   
-    <a href="/2021/03/06/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/"><i class="iconfont iconleft"></i>自动化测试简介</a>
   
-  
-    <a href="/2021/02/07/vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">vue源码解析<i class="iconfont iconright"></i></a>
+    <a href="/2021/03/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E4%B8%8E%E6%8A%93%E5%8C%85/">移动端调试与抓包<i class="iconfont iconright"></i></a>
   
 </nav>
 
