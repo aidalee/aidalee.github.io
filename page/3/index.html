@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Archive - Hexo: 2021/1</title>
+  <title>Hexo</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -62,7 +62,7 @@
     var CONFIG = window.CONFIG || {};
     var ZHAOO = window.ZHAOO || {};
     CONFIG = {
-      isHome: false,
+      isHome: true,
       fancybox: true,
       pjax: false,
       lazyload: {
@@ -102,14 +102,6 @@
   <div class="loading"></div>
   
 
-
-<nav class="navbar">
-  <div class="left"></div>
-  <div class="center">归档</div>
-  <div class="right">
-    <i class="iconfont iconmenu j-navbar-menu"></i>
-  </div>
-</nav>
 
   <nav class="menu">
   <div class="menu-wrap">
@@ -153,133 +145,57 @@
   </div>
 </nav>
   <main id="main">
-  <section class="archive">
-    <div class="archive-container">
-      <div class="archive-post">
-        <h3 class="archive-total">归档: 19 篇</h3>
+  
+    <div class="preview">
+  <nav class="navbar j-navbar-menu">
+    <i class="iconfont iconmenu"></i>
+  </nav>
+  <div class="preview-image">
+    <h2 class="preview-motto" id="motto"></h2>
+    <!-- <span class="preview-cursor">|</span> -->
+    
+    <img src="/images/theme/cloud.png" class="preview-overlay" draggable="false">
+    
+  </div>
+  <div class="preview-scroll">
+    <a href="#container" class="smooth-scroll"><i class="iconfont iconMouse"></i></a>
+  </div>
+</div>
+  
+  <div class="container" id="container">
+    <section class="row post">
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/10/01/hello-world/" class="post-image">
+      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/10/01/hello-world/">Hello World</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 01, 2020</span
+          class="post-info-item">
         
-        
-        
-        <h3 class="archive-year">2021 年</h3>
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2021/03/06/%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8%E5%8F%91%E5%B8%83%E2%80%94%E2%80%94devops/">March 06</a>
-          <a class="archive-title" href="/2021/03/06/%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8%E5%8F%91%E5%B8%83%E2%80%94%E2%80%94devops/">前端应用发布——devops</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2021/03/06/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/">March 06</a>
-          <a class="archive-title" href="/2021/03/06/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/">自动化测试简介</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2021/03/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E4%B8%8E%E6%8A%93%E5%8C%85/">March 01</a>
-          <a class="archive-title" href="/2021/03/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E4%B8%8E%E6%8A%93%E5%8C%85/">移动端调试与抓包</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2021/02/07/vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">February 07</a>
-          <a class="archive-title" href="/2021/02/07/vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">vue源码解析</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2021/01/29/%E5%BE%AE%E5%89%8D%E7%AB%AF/">January 29</a>
-          <a class="archive-title" href="/2021/01/29/%E5%BE%AE%E5%89%8D%E7%AB%AF/">微前端</a>
-        </div>
-        
-        
-        <h3 class="archive-year">2020 年</h3>
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/12/28/tsconfig/">December 28</a>
-          <a class="archive-title" href="/2020/12/28/tsconfig/"></a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/12/18/react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91/">December 18</a>
-          <a class="archive-title" href="/2020/12/18/react%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91/">react组件库开发</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/12/15/%E4%BB%80%E4%B9%88%E6%98%AF%E5%92%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8react-hook/">December 15</a>
-          <a class="archive-title" href="/2020/12/15/%E4%BB%80%E4%B9%88%E6%98%AF%E5%92%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8react-hook/">什么是和为什么使用react hook</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">October 22</a>
-          <a class="archive-title" href="/2020/10/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/14/%E5%BC%82%E6%AD%A5%E5%92%8C%E5%8D%95%E7%BA%BF%E7%A8%8B/">October 14</a>
-          <a class="archive-title" href="/2020/10/14/%E5%BC%82%E6%AD%A5%E5%92%8C%E5%8D%95%E7%BA%BF%E7%A8%8B/">异步和单线程</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/14/typescript%E5%85%A5%E9%97%A8/">October 14</a>
-          <a class="archive-title" href="/2020/10/14/typescript%E5%85%A5%E9%97%A8/">typescript入门</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/04/%E5%81%8F%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9F%AF%E9%87%8C%E5%8C%96/">October 04</a>
-          <a class="archive-title" href="/2020/10/04/%E5%81%8F%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9F%AF%E9%87%8C%E5%8C%96/">偏函数与柯里化</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/04/js%E6%A8%A1%E6%8B%9F%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0/">October 04</a>
-          <a class="archive-title" href="/2020/10/04/js%E6%A8%A1%E6%8B%9F%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0/">js模拟私有变量的实现</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/">October 03</a>
-          <a class="archive-title" href="/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/">词法作用域和动态作用域</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/03/LHS%E3%80%81RHS/">October 03</a>
-          <a class="archive-title" href="/2020/10/03/LHS%E3%80%81RHS/">LHS、RHS</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/03/js%E9%97%AD%E5%8C%85/">October 03</a>
-          <a class="archive-title" href="/2020/10/03/js%E9%97%AD%E5%8C%85/">js闭包</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">October 02</a>
-          <a class="archive-title" href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">md基本常用语法</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">October 02</a>
-          <a class="archive-title" href="/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
-        </div>
-        
-        
-        <div class="archive-item">
-          <a class="archive-date" href="/2020/10/01/hello-world/">October 01</a>
-          <a class="archive-title" href="/2020/10/01/hello-world/">Hello World</a>
-        </div>
-        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>444</span>
       </div>
     </div>
-  </section>
+  </div>
+</div>
+  
+</section>
+    <section class="paginator">
+  
+  <a class="extend prev" rel="prev" href="/page/2/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  
+</section>
+  </div>
 </main>
   <footer class="footer">
   <div class="footer-social">
