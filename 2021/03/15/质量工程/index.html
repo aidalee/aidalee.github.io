@@ -7,13 +7,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hexo</title>
+  <title>质量工程 - Hexo</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
+  <meta name="description" content="前端提测-自测标准（checklist）
+提交到测试之..."> 
   
   <meta name="author" content="aidalee"> 
 
@@ -62,7 +64,7 @@
     var CONFIG = window.CONFIG || {};
     var ZHAOO = window.ZHAOO || {};
     CONFIG = {
-      isHome: true,
+      isHome: false,
       fancybox: true,
       pjax: false,
       lazyload: {
@@ -102,6 +104,14 @@
   <div class="loading"></div>
   
 
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">质量工程</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
 
   <nav class="menu">
   <div class="menu-wrap">
@@ -145,145 +155,124 @@
   </div>
 </nav>
   <main id="main">
-  
-    <div class="preview">
-  <nav class="navbar j-navbar-menu">
-    <i class="iconfont iconmenu"></i>
-  </nav>
-  <div class="preview-image">
-    <h2 class="preview-motto" id="motto"></h2>
-    <!-- <span class="preview-cursor">|</span> -->
-    
-    <img src="/images/theme/cloud.png" class="preview-overlay" draggable="false">
-    
-  </div>
-  <div class="preview-scroll">
-    <a href="#container" class="smooth-scroll"><i class="iconfont iconMouse"></i></a>
-  </div>
-</div>
-  
   <div class="container" id="container">
-    <section class="row post">
-  
-  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
-  <div class="post-wrap">
-    
-    <a href="/2020/10/03/js%E9%97%AD%E5%8C%85/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-    </a>
-    <div class="post-content">
-      <h3 class="post-title"><a href="/2020/10/03/js%E9%97%AD%E5%8C%85/">js闭包</a></h3>
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">质量工程</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 15, 2021</span
+        class="post-info-item">
       
-      
-      
-      <div class="post-excerpt">
-        <p class="substr-3">作用域的实现机制几乎每一种编程语言，它最基本的能力都是能够存储变量当中的值、并且允许我们对这个变量的值进行访问和修改。那么有了变量之后，应该把它放在那里、程序如何找到它们？这是不是需要我们提前约...</p>
-      </div>
-      <div class="post-info">
-        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 03, 2020</span
-          class="post-info-item">
-        
-        <span class="post-info-item"><i class="iconfont iconfont-size"></i>824</span>
-      </div>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>644</span>
     </div>
   </div>
-</div>
-  
-  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
-  <div class="post-wrap">
-    
-    <a href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-    </a>
-    <div class="post-content">
-      <h3 class="post-title"><a href="/2020/10/02/md%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">md基本常用语法</a></h3>
-      
-      
-      
-      <div class="post-excerpt">
-        <p class="substr-3">标题从#、##、…###### 代表h1~h6
-列表无序列表+、-、*都可
-有序列表1 、2. …
-嵌套列表无序列表嵌套
-123
-abc
-bcd
-cde
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="前端提测-自测标准（checklist）"><a href="#前端提测-自测标准（checklist）" class="headerlink" title="前端提测-自测标准（checklist）"></a>前端提测-自测标准（checklist）</h1><blockquote>
+<p>提交到测试之前，一定要做完整自测，自测不通过，不允许提测。</p>
+</blockquote>
+<ul>
+<li>功能自测</li>
+</ul>
+<ol>
+<li>对照ui视觉稿，查看实现效果是否还原，检查文案是否有错别字（视觉提供）</li>
+<li>对照prd，通过prd用例测试（产品提供）</li>
+<li>如果有测试用例，通过测试用例（需要测试提供）</li>
+<li>接口错误时，检查后台相关提示语。</li>
+<li>各种校验验证</li>
+</ol>
+<ul>
+<li>兼容性自测</li>
+</ul>
+<ol>
+<li>UI层</li>
+</ol>
+<ul>
+<li>文字过长（换行或省略，限制输入字符的max-length），</li>
+<li>元素很多（一行显示不下等，需要换行或者约定可显示最大值）</li>
+</ul>
+<ol start="2">
+<li>多机型多系统兼容性</li>
+</ol>
+<ul>
+<li>chrome移动设备调试模式（常见设备）</li>
+<li>Android和iOS机型上验证（根据时间和设备允许尽可能多的）兼容性</li>
+<li>……</li>
+<li>容错自测</li>
+</ul>
+<ol>
+<li>边界条件测试</li>
+<li>接口返回未登录错误处理（如果该页面确实可以不登录访问）</li>
+<li>接口没有返回数据的场景，比如字段不存在或者值为null或者空数组</li>
+</ol>
+<ul>
+<li>其他检查项</li>
+</ul>
+<ol>
+<li>对于引入的图片资源需要检查是否太大，有无压缩等</li>
+<li>反应慢的地方是否有等待标识。</li>
+<li>对于临时新增的需求，变更，要求测试补全用例</li>
+</ol>
+<ul>
+<li>修改Bug后的自测:</li>
+</ul>
+<ol>
+<li>需要了解bug的影响面，改完bug后需要对相关流程走一遍，确保没有引入新的问题。在JIRA上准备填写bug类型，在备注说明详细原因，便于项管追踪分类统计</li>
+<li>改完bug后需要自己在dev/test环境验证一下</li>
+<li>改完bug后尽量通知给相关测试，让他们尽快验证，以免拖到最后发现还有问题没有时间去改。</li>
+<li>重新打回的bug需要额外关注，备注原因</li>
+</ol>
 
-
-465
-789
-
-有序列表嵌套
-ab...</p>
-      </div>
-      <div class="post-info">
-        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span
-          class="post-info-item">
+      </section>
+      <section class="extra">
         
-        <span class="post-info-item"><i class="iconfont iconfont-size"></i>1632</span>
-      </div>
-    </div>
-  </div>
-</div>
+        <ul class="copyright">
   
-  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
-  <div class="post-wrap">
-    
-    <a href="/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-    </a>
-    <div class="post-content">
-      <h3 class="post-title"><a href="/2020/10/02/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a></h3>
-      
-      
-      
-      <div class="post-excerpt">
-        <p class="substr-3">提交代码流程
-从 master 分支开出新分支 feature/example：git checkout -b feature/example
+  <li><strong>本文作者：</strong>aidalee</li>
+  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2021/03/15/%E8%B4%A8%E9%87%8F%E5%B7%A5%E7%A8%8B/index.html">https://aidalee.github.io/2021/03/15/%E8%B4%A8%E9%87%8F%E5%B7%A5%E7%A8%8B/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/" rel="tag">工作总结</a></li></ul>
 
-将此feature分支推送到远端： git pu...</p>
-      </div>
-      <div class="post-info">
-        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span
-          class="post-info-item">
         
-        <span class="post-info-item"><i class="iconfont iconfont-size"></i>1361</span>
-      </div>
-    </div>
-  </div>
-</div>
+<nav class="nav">
   
-  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
-  <div class="post-wrap">
-    
-    <a href="/2020/10/01/hello-world/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-    </a>
-    <div class="post-content">
-      <h3 class="post-title"><a href="/2020/10/01/hello-world/">Hello World</a></h3>
+  
+    <a href="/2021/03/11/vue%E6%8C%87%E4%BB%A4%E8%BF%87%E6%BB%A4%E5%99%A8%E5%85%AC%E5%85%B1%E6%96%B9%E6%B3%95%E5%BA%93/">vue指令过滤器公共方法库<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
       
-      
-      
-      <div class="post-excerpt">
-        <p class="substr-3">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
-      </div>
-      <div class="post-info">
-        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 01, 2020</span
-          class="post-info-item">
-        
-        <span class="post-info-item"><i class="iconfont iconfont-size"></i>444</span>
-      </div>
-    </div>
-  </div>
-</div>
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
   
 </section>
-    <section class="paginator">
-  
-  <a class="extend prev" rel="prev" href="/page/2/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  
-</section>
+      
+    </section>
+  </div>
+</article>
   </div>
 </main>
   <footer class="footer">
