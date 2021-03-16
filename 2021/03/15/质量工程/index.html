@@ -166,7 +166,7 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 15, 2021</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3476</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3469</span>
     </div>
   </div>
 </section>
@@ -239,7 +239,7 @@
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> &#123; shallowMount, createLocalVue &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@vue/test-utils&#x27;</span>;<br>jest.mock(<span class="hljs-string">&#x27;@/api/url/finance&#x27;</span>);<br><span class="hljs-keyword">import</span> IndexPage <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/views/index.vue&#x27;</span>;<br><br><br>describe(<span class="hljs-string">&#x27;首页测试&#x27;</span>, () =&gt; &#123;<br><br>    it(<span class="hljs-string">&#x27;mas方法测试&#x27;</span>, done =&gt; &#123;<br><br>        const localVue = createLocalVue();<br><br>        const <span class="hljs-keyword">wrapper</span> = shallowMount(IndexPage, &#123;<br>            localVue<br>        &#125;);<br><br>        <span class="hljs-keyword">wrapper</span>.vm.mas();<br>        <span class="hljs-keyword">wrapper</span>.vm.$nextTick(() =&gt; &#123;<br>            expect(<span class="hljs-keyword">wrapper</span>.vm.a).toBe(<span class="hljs-number">3</span>);<br>            done();<br>        &#125;);<br>    &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
 <p>对于dom，使用快照进行测试即可</p>
 <h2 id="测试覆盖场景"><a href="#测试覆盖场景" class="headerlink" title="测试覆盖场景"></a>测试覆盖场景</h2><h3 id="重要的测试场景"><a href="#重要的测试场景" class="headerlink" title="重要的测试场景"></a>重要的测试场景</h3><p>1：公共函数，必须要覆盖到。<br>每种入参，出参，函数里面的每个分支<br>如： filter里面的函数<br>2：较复杂的组件<br>components里面的代码<br>3： vuex文件</p>
-<h3 id="推荐的测试场景"><a href="#推荐的测试场景" class="headerlink" title="推荐的测试场景"></a>推荐的测试场景</h3><p>1：views下面的页面，涉及到一些流程，比如弹B首页。</p>
+<h3 id="推荐的测试场景"><a href="#推荐的测试场景" class="headerlink" title="推荐的测试场景"></a>推荐的测试场景</h3><p>1：views下面的页面，涉及到一些流程。</p>
 <h3 id="不重要的测试场景"><a href="#不重要的测试场景" class="headerlink" title="不重要的测试场景"></a>不重要的测试场景</h3><p>1：新启动的业务，还没有上线。<br>业务场景会经常变，单测工作量倍增<br>2： 活动项目<br>业务生命周期非常短，上线仅仅使用一段时间，投入产出比低<br>PS：具体场景，还是要具体细看</p>
 <h3 id="不推荐的测试场景"><a href="#不推荐的测试场景" class="headerlink" title="不推荐的测试场景"></a>不推荐的测试场景</h3><p>1：某些死的流程<br>单一流程，没有任何的分支情况<br>2：某些静态数据<br>3：很简单的组件<br>静态组件，没有任何入参，事件。</p>
 
