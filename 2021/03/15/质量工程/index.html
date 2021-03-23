@@ -1,178 +1,136 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>质量工程 - Hexo</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="google" content="notranslate" />
-
-  
-  
-  <meta name="description" content="前端提测-自测标准（checklist）
-提交到测试之..."> 
-  
-  <meta name="author" content="aidalee"> 
-
-  
-    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
-  
-  
-    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
-  
-  
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
-  
-  
-    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
-  
-  
-    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
-    <meta rel="msapplication-TileColor" content="#000000">
-  
-
-  
-<link rel="stylesheet" href="/css/style.css">
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
 
-  
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_hhodbqn7tit.css">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-  
 
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
 
-  
+  <meta name="description" content="质量工程"/>
 
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
 
-  
 
-  <script>
-    var CONFIG = window.CONFIG || {};
-    var ZHAOO = window.ZHAOO || {};
-    CONFIG = {
-      isHome: false,
-      fancybox: true,
-      pjax: false,
-      lazyload: {
-        enable: true,
-        loadingImage: '/images/theme/loading.gif',
-      },
-      donate: {
-        enable: true,
-        alipay: 'https://pic.izhaoo.com/alipay.jpg',
-        wechat: 'https://pic.izhaoo.com/wechat.jpg'
-      },
-      motto: {
-        api: '',
-        default: '万物皆有裂痕，那是光照进来的地方。'
-      },
-      galleries: {
-        enable: true
-      },
-      fab: {
-        enable: true,
-        alwaysShow: false
-      },
-      carrier: {
-        enable: true
-      },
-      daovoice: {
-        enable: true
-      }
-    }
-  </script>
+
+  <meta name="keywords" content="工作总结," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://aidalee.github.io/2021/03/15/质量工程/"/>
+
+
+<meta name="description" content="前端提测-自测标准（checklist） 提交到测试之前，一定要做完整自测，自测不通过，不允许提测。   功能自测   对照ui视觉稿，查看实现效果是否还原，检查文案是否有错别字（视觉提供） 对照prd，通过prd用例测试（产品提供） 如果有测试用例，通过测试用例（需要测试提供） 接口错误时，检查后台相关提示语。 各种校验验证   兼容性自测   UI层   文字过长（换行或省略，限制输入字符的m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="质量工程">
+<meta property="og:url" content="https://aidalee.github.io/2021/03/15/%E8%B4%A8%E9%87%8F%E5%B7%A5%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前端提测-自测标准（checklist） 提交到测试之前，一定要做完整自测，自测不通过，不允许提测。   功能自测   对照ui视觉稿，查看实现效果是否还原，检查文案是否有错别字（视觉提供） 对照prd，通过prd用例测试（产品提供） 如果有测试用例，通过测试用例（需要测试提供） 接口错误时，检查后台相关提示语。 各种校验验证   兼容性自测   UI层   文字过长（换行或省略，限制输入字符的m">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-15T05:43:43.000Z">
+<meta property="article:modified_time" content="2021-03-16T02:09:40.824Z">
+<meta property="article:author" content="aidalee">
+<meta property="article:tag" content="工作总结">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
 
   
 
-  
-<meta name="generator" content="Hexo 5.2.0"></head>
-<body class="lock-screen">
-  <div class="loading"></div>
-  
 
 
-<nav class="navbar">
-  <div class="left"></div>
-  <div class="center">质量工程</div>
-  <div class="right">
-    <i class="iconfont iconmenu j-navbar-menu"></i>
-  </div>
-</nav>
+    <title> 质量工程 - Hexo </title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
 
-  <nav class="menu">
-  <div class="menu-wrap">
-    <div class="menu-close">
-      <i class="iconfont iconbaseline-close-px"></i>
-    </div>
-    <ul class="menu-content">
-      
-      
-      
-      
-      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
-      
-    </ul>
-    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-  </div>
-</nav>
-  <main id="main">
-  <div class="container" id="container">
-    <article class="article">
-  <div class="wrap">
-    <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-  <div class="head-mask">
-    <h1 class="head-title">质量工程</h1>
-    <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 15, 2021</span
-        class="post-info-item">
-      
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3469</span>
-    </div>
-  </div>
-</section>
-    <section class="main">
-      <section class="content">
-        <h1 id="前端提测-自测标准（checklist）"><a href="#前端提测-自测标准（checklist）" class="headerlink" title="前端提测-自测标准（checklist）"></a>前端提测-自测标准（checklist）</h1><blockquote>
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          质量工程
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 15 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="前端提测-自测标准（checklist）"><a href="#前端提测-自测标准（checklist）" class="headerlink" title="前端提测-自测标准（checklist）"></a>前端提测-自测标准（checklist）</h1><blockquote>
 <p>提交到测试之前，一定要做完整自测，自测不通过，不允许提测。</p>
 </blockquote>
 <ul>
@@ -232,221 +190,98 @@
 <h2 id="公共方法单元测试"><a href="#公共方法单元测试" class="headerlink" title="公共方法单元测试"></a>公共方法单元测试</h2><p>1：每个方法，一定要吧各个代码逻辑分支流程测试到。<br>测试核心点：<br>不同的浏览器环境，<br>不同url域名的环境<br>需要使用不同的文件来进行测试<br>2：公共方法库，sdk的测试<br>同上，单测代码在sdk中同步补全。</p>
 <h2 id="vue单元测试"><a href="#vue单元测试" class="headerlink" title="vue单元测试"></a>vue单元测试</h2><p>核心：围绕业务流程（代码逻辑）跟测试用例，进行编写单测功能点<br>1：在写单测用例时，测试用例的名字要符合业务测试用例的规则。<br>2：自测每个流程都可以通过。<br>3：尽可能保证每个页面都是有快照文件。<br>在需求发布时，单测报告单中，会输出单元测试的变更情况。<br>在业务测试用例较少，切单元测试覆盖率可以完美覆盖时，建议可以直接发布上线。</p>
 <h2 id="测试方式"><a href="#测试方式" class="headerlink" title="测试方式"></a>测试方式</h2><p>举例：Vue界面</p>
-<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pg-home&quot;</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;@/assets/logo.png&quot;</span>/&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mask&quot;</span>&gt;</span>我是首页<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">a</span>&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">env</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">env</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml">import Api from &#x27;@/api&#x27;;</span><br><span class="xml">import Env from &#x27;@/components/HelloWorld.vue&#x27;;</span><br><br><span class="xml">export default &#123;</span><br><span class="xml">    data() &#123;</span><br><span class="xml">        return &#123;</span><br><span class="xml">            a: 1</span><br><span class="xml">        &#125;</span><br><span class="xml">    &#125;,</span><br><span class="xml">    components: &#123;</span><br><span class="xml">        Env</span><br><span class="xml">    &#125;,</span><br><span class="xml">    methods: &#123;</span><br><span class="xml">        mas() &#123;</span><br><span class="xml">            this.a++;</span><br><span class="xml">        &#125;</span><br><span class="xml">    &#125;,</span><br><span class="xml">    mounted() &#123;</span><br><span class="xml">        Api.finance.v2_homePageApiV2_getAdPositionidConfig(&#123;location: 0&#125;).then((res) =&gt; &#123;</span><br><span class="xml">            console.log(res); // eslint-disable-line</span><br><span class="xml">            this.a++;</span><br><span class="xml">        &#125;);</span><br><span class="xml">    &#125;</span><br><span class="xml">&#125;;</span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pg-home"</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"@/assets/logo.png"</span>/&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mask"</span>&gt;</span>我是首页<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;a&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">env</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">env</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml">import Api from '@/api';</span><br><span class="xml">import Env from '@/components/HelloWorld.vue';</span><br><br><span class="xml">export default &#123;</span><br><span class="xml">    data() &#123;</span><br><span class="xml">        return &#123;</span><br><span class="xml">            a: 1</span><br><span class="xml">        &#125;</span><br><span class="xml">    &#125;,</span><br><span class="xml">    components: &#123;</span><br><span class="xml">        Env</span><br><span class="xml">    &#125;,</span><br><span class="xml">    methods: &#123;</span><br><span class="xml">        mas() &#123;</span><br><span class="xml">            this.a++;</span><br><span class="xml">        &#125;</span><br><span class="xml">    &#125;,</span><br><span class="xml">    mounted() &#123;</span><br><span class="xml">        Api.finance.v2_homePageApiV2_getAdPositionidConfig(&#123;location: 0&#125;).then((res) =&gt; &#123;</span><br><span class="xml">            console.log(res); // eslint-disable-line</span><br><span class="xml">            this.a++;</span><br><span class="xml">        &#125;);</span><br><span class="xml">    &#125;</span><br><span class="xml">&#125;;</span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <p>对于vue界面，测试生命周期</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> &#123; shallowMount, createLocalVue &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@vue/test-utils&#x27;</span>;<br>jest.mock(<span class="hljs-string">&#x27;@/api/url/finance&#x27;</span>);<br><span class="hljs-keyword">import</span> IndexPage <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/views/index.vue&#x27;</span>;<br><br><br>describe(<span class="hljs-string">&#x27;首页测试&#x27;</span>, () =&gt; &#123;<br><br>    it(<span class="hljs-string">&#x27;生命周期测试&#x27;</span>, done =&gt; &#123;<br><br>        const localVue = createLocalVue();<br><br>        const <span class="hljs-keyword">wrapper</span> = shallowMount(IndexPage, &#123;<br>            propsData: &#123;&#125;,<br>            localVue<br>        &#125;);<br><br>        <span class="hljs-keyword">wrapper</span>.vm.$nextTick(() =&gt; &#123;<br>            expect(<span class="hljs-keyword">wrapper</span>.vm.a).toBe(<span class="hljs-number">2</span>);<br>            done();<br>        &#125;);<br>    &#125;);<br><br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> &#123; shallowMount, createLocalVue &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@vue/test-utils'</span>;<br>jest.mock(<span class="hljs-string">'@/api/url/finance'</span>);<br><span class="hljs-keyword">import</span> IndexPage <span class="hljs-keyword">from</span> <span class="hljs-string">'@/views/index.vue'</span>;<br><br><br>describe(<span class="hljs-string">'首页测试'</span>, () =&gt; &#123;<br><br>    it(<span class="hljs-string">'生命周期测试'</span>, done =&gt; &#123;<br><br>        const localVue = createLocalVue();<br><br>        const <span class="hljs-keyword">wrapper</span> = shallowMount(IndexPage, &#123;<br>            propsData: &#123;&#125;,<br>            localVue<br>        &#125;);<br><br>        <span class="hljs-keyword">wrapper</span>.vm.$nextTick(() =&gt; &#123;<br>            expect(<span class="hljs-keyword">wrapper</span>.vm.a).toBe(<span class="hljs-number">2</span>);<br>            done();<br>        &#125;);<br>    &#125;);<br><br>&#125;);<br></code></pre></td></tr></table></figure>
 <p>对于方法，调用，异步判断state数据是否正确</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> &#123; shallowMount, createLocalVue &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@vue/test-utils&#x27;</span>;<br>jest.mock(<span class="hljs-string">&#x27;@/api/url/finance&#x27;</span>);<br><span class="hljs-keyword">import</span> IndexPage <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/views/index.vue&#x27;</span>;<br><br><br>describe(<span class="hljs-string">&#x27;首页测试&#x27;</span>, () =&gt; &#123;<br><br>    it(<span class="hljs-string">&#x27;mas方法测试&#x27;</span>, done =&gt; &#123;<br><br>        const localVue = createLocalVue();<br><br>        const <span class="hljs-keyword">wrapper</span> = shallowMount(IndexPage, &#123;<br>            localVue<br>        &#125;);<br><br>        <span class="hljs-keyword">wrapper</span>.vm.mas();<br>        <span class="hljs-keyword">wrapper</span>.vm.$nextTick(() =&gt; &#123;<br>            expect(<span class="hljs-keyword">wrapper</span>.vm.a).toBe(<span class="hljs-number">3</span>);<br>            done();<br>        &#125;);<br>    &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> &#123; shallowMount, createLocalVue &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@vue/test-utils'</span>;<br>jest.mock(<span class="hljs-string">'@/api/url/finance'</span>);<br><span class="hljs-keyword">import</span> IndexPage <span class="hljs-keyword">from</span> <span class="hljs-string">'@/views/index.vue'</span>;<br><br><br>describe(<span class="hljs-string">'首页测试'</span>, () =&gt; &#123;<br><br>    it(<span class="hljs-string">'mas方法测试'</span>, done =&gt; &#123;<br><br>        const localVue = createLocalVue();<br><br>        const <span class="hljs-keyword">wrapper</span> = shallowMount(IndexPage, &#123;<br>            localVue<br>        &#125;);<br><br>        <span class="hljs-keyword">wrapper</span>.vm.mas();<br>        <span class="hljs-keyword">wrapper</span>.vm.$nextTick(() =&gt; &#123;<br>            expect(<span class="hljs-keyword">wrapper</span>.vm.a).toBe(<span class="hljs-number">3</span>);<br>            done();<br>        &#125;);<br>    &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
 <p>对于dom，使用快照进行测试即可</p>
 <h2 id="测试覆盖场景"><a href="#测试覆盖场景" class="headerlink" title="测试覆盖场景"></a>测试覆盖场景</h2><h3 id="重要的测试场景"><a href="#重要的测试场景" class="headerlink" title="重要的测试场景"></a>重要的测试场景</h3><p>1：公共函数，必须要覆盖到。<br>每种入参，出参，函数里面的每个分支<br>如： filter里面的函数<br>2：较复杂的组件<br>components里面的代码<br>3： vuex文件</p>
 <h3 id="推荐的测试场景"><a href="#推荐的测试场景" class="headerlink" title="推荐的测试场景"></a>推荐的测试场景</h3><p>1：views下面的页面，涉及到一些流程。</p>
 <h3 id="不重要的测试场景"><a href="#不重要的测试场景" class="headerlink" title="不重要的测试场景"></a>不重要的测试场景</h3><p>1：新启动的业务，还没有上线。<br>业务场景会经常变，单测工作量倍增<br>2： 活动项目<br>业务生命周期非常短，上线仅仅使用一段时间，投入产出比低<br>PS：具体场景，还是要具体细看</p>
 <h3 id="不推荐的测试场景"><a href="#不推荐的测试场景" class="headerlink" title="不推荐的测试场景"></a>不推荐的测试场景</h3><p>1：某些死的流程<br>单一流程，没有任何的分支情况<br>2：某些静态数据<br>3：很简单的组件<br>静态组件，没有任何入参，事件。</p>
 
-      </section>
-      <section class="extra">
-        
-        <ul class="copyright">
-  
-  <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2021/03/15/%E8%B4%A8%E9%87%8F%E5%B7%A5%E7%A8%8B/index.html">https://aidalee.github.io/2021/03/15/%E8%B4%A8%E9%87%8F%E5%B7%A5%E7%A8%8B/index.html</a></li>
-  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
-      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
-  
-</ul>
-        
-        
-        <section class="donate">
-  <div class="qrcode">
-    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
-  </div>
-  <div class="icon">
-    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
-    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
-  </div>
-</section>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/">工作总结</a>
+		  
+		</div>
+		
+
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/" rel="tag">工作总结</a></li></ul>
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/03/17/pd-%E7%89%A9%E6%96%99/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">pd 物料</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2021/03/11/vue%E6%8C%87%E4%BB%A4%E8%BF%87%E6%BB%A4%E5%99%A8%E5%85%AC%E5%85%B1%E6%96%B9%E6%B3%95%E5%BA%93/">
+        <span class="next-text nav-default">vue指令过滤器公共方法库</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
 
         
-<nav class="nav">
-  
-    <a href="/2021/03/17/pd-%E7%89%A9%E6%96%99/"><i class="iconfont iconleft"></i>pd 物料</a>
-  
-  
-    <a href="/2021/03/11/vue%E6%8C%87%E4%BB%A4%E8%BF%87%E6%BB%A4%E5%99%A8%E5%85%AC%E5%85%B1%E6%96%B9%E6%B3%95%E5%BA%93/">vue指令过滤器公共方法库<i class="iconfont iconright"></i></a>
-  
-</nav>
-
-      </section>
-      
-      <section class="comments">
-  
-  <div class="btn" id="comments-btn">查看评论</div>
-  
-  
-</section>
-      
-    </section>
-  </div>
-</article>
-  </div>
-</main>
-  <footer class="footer">
-  <div class="footer-social">
-    
-    
-    
-    
-    
-    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconQQ "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconwechat-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconinstagram "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  icongithub-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconmail"></i>
-    </a>
+  <div class="comments" id="comments">
     
   </div>
-  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-</footer>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">aidalee.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
   
-      <div class="fab fab-plus">
-    <i class="iconfont iconplus"></i>
-  </div>
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
   
-  <div class="fab fab-daovoice">
-    <i class="iconfont iconcomment"></i>
-  </div>
+
   
-  <div class="fab fab-up">
-    <i class="iconfont iconcaret-up"></i>
-  </div>
-  
-</body>
 
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
 
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
-
-
-
-
-
-<script src="/js/utils.js"></script>
-<script src="/js/modules.js"></script>
-<script src="/js/zui.js"></script>
-<script src="/js/script.js"></script>
-
-
-
-
-
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i["DaoVoiceObject"] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    a.charset = "utf-8";
-    m.parentNode.insertBefore(a, m)
-  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
-    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
-  daovoice('init', {
-    app_id: "abcdefg"
-  }, {
-    launcher: {
-      disableLauncherIcon: true,
-    },
-  });
-  daovoice('update');
-</script>
-
-
-
-<script>
-  (function () {
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    } else {
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-  })();
-</script>
-
-
-<script>
-  var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
-
-
-
-
-
-
-
-
-
-
+  </body>
 </html>

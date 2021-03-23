@@ -1,184 +1,142 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>词法作用域和动态作用域 - Hexo</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="google" content="notranslate" />
-
-  
-  
-  <meta name="description" content="站在语言的层面来看，作用域其实有两种主要的工作模型：
-..."> 
-  
-  <meta name="author" content="aidalee"> 
-
-  
-    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
-  
-  
-    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
-  
-  
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
-  
-  
-    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
-  
-  
-    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
-    <meta rel="msapplication-TileColor" content="#000000">
-  
-
-  
-<link rel="stylesheet" href="/css/style.css">
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
 
-  
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_hhodbqn7tit.css">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-  
 
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
 
-  
+  <meta name="description" content="词法作用域和动态作用域"/>
 
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
 
-  
 
-  <script>
-    var CONFIG = window.CONFIG || {};
-    var ZHAOO = window.ZHAOO || {};
-    CONFIG = {
-      isHome: false,
-      fancybox: true,
-      pjax: false,
-      lazyload: {
-        enable: true,
-        loadingImage: '/images/theme/loading.gif',
-      },
-      donate: {
-        enable: true,
-        alipay: 'https://pic.izhaoo.com/alipay.jpg',
-        wechat: 'https://pic.izhaoo.com/wechat.jpg'
-      },
-      motto: {
-        api: '',
-        default: '万物皆有裂痕，那是光照进来的地方。'
-      },
-      galleries: {
-        enable: true
-      },
-      fab: {
-        enable: true,
-        alwaysShow: false
-      },
-      carrier: {
-        enable: true
-      },
-      daovoice: {
-        enable: true
-      }
-    }
-  </script>
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://aidalee.github.io/2020/10/03/词法作用域和动态作用域/"/>
+
+
+<meta name="description" content="站在语言的层面来看，作用域其实有两种主要的工作模型：  词法作用域：也称为静态作用域。这是最普遍的一种作用域模型 动态作用域：相对“冷门”，但确实有一些语言采纳的是动态作用域，如：Bash 脚本、Perl 等  词法作用域直接来看一段代码： 123456789101112var name &#x3D; &#39;xl&#39;;function showName() &amp;#123;    console.log(name);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="词法作用域和动态作用域">
+<meta property="og:url" content="https://aidalee.github.io/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="站在语言的层面来看，作用域其实有两种主要的工作模型：  词法作用域：也称为静态作用域。这是最普遍的一种作用域模型 动态作用域：相对“冷门”，但确实有一些语言采纳的是动态作用域，如：Bash 脚本、Perl 等  词法作用域直接来看一段代码： 123456789101112var name &#x3D; &#39;xl&#39;;function showName() &amp;#123;    console.log(name);">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-03T06:41:54.000Z">
+<meta property="article:modified_time" content="2020-10-03T09:08:18.516Z">
+<meta property="article:author" content="aidalee">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
 
   
 
-  
-<meta name="generator" content="Hexo 5.2.0"></head>
-<body class="lock-screen">
-  <div class="loading"></div>
-  
 
 
-<nav class="navbar">
-  <div class="left"></div>
-  <div class="center">词法作用域和动态作用域</div>
-  <div class="right">
-    <i class="iconfont iconmenu j-navbar-menu"></i>
-  </div>
-</nav>
+    <title> 词法作用域和动态作用域 - Hexo </title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
 
-  <nav class="menu">
-  <div class="menu-wrap">
-    <div class="menu-close">
-      <i class="iconfont iconbaseline-close-px"></i>
-    </div>
-    <ul class="menu-content">
-      
-      
-      
-      
-      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
-      
-    </ul>
-    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-  </div>
-</nav>
-  <main id="main">
-  <div class="container" id="container">
-    <article class="article">
-  <div class="wrap">
-    <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-  <div class="head-mask">
-    <h1 class="head-title">词法作用域和动态作用域</h1>
-    <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 03, 2020</span
-        class="post-info-item">
-      
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>919</span>
-    </div>
-  </div>
-</section>
-    <section class="main">
-      <section class="content">
-        <p>站在语言的层面来看，作用域其实有两种主要的工作模型：</p>
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          词法作用域和动态作用域
+        
+      </h1>
+
+      <time class="post-time">
+          Oct 03 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>站在语言的层面来看，作用域其实有两种主要的工作模型：</p>
 <ol>
 <li>词法作用域：也称为静态作用域。这是最普遍的一种作用域模型</li>
 <li>动态作用域：相对“冷门”，但确实有一些语言采纳的是动态作用域，如：Bash 脚本、Perl 等</li>
 </ol>
 <h1 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h1><p>直接来看一段代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> name = <span class="hljs-string">&#x27;xl&#x27;</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showName</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(name);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeName</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&#x27;BigBear&#x27;</span>;<br>    showName();<br>&#125;<br><br>changeName();<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> name = <span class="hljs-string">'xl'</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showName</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(name);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeName</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">'BigBear'</span>;<br>    showName();<br>&#125;<br><br>changeName();<br></code></pre></td></tr></table></figure>
 
 <p>这是一段 JS 代码，它的运行结果是 ‘xl’。这是因为 JS 采取的就是词法（静态）作用域，这段代码运行过程中，经历了这样的变量定位流程：</p>
 <ol>
@@ -198,210 +156,87 @@
 <li>动态作用域： 在代码运行时完成划分，作用域链沿着它的调用栈往外延伸</li>
 </ol>
 
-      </section>
-      <section class="extra">
-        
-        <ul class="copyright">
-  
-  <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/index.html">https://aidalee.github.io/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/index.html</a></li>
-  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
-      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
-  
-</ul>
-        
-        
-        <section class="donate">
-  <div class="qrcode">
-    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
-  </div>
-  <div class="icon">
-    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
-    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
-  </div>
-</section>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/js/">js</a>
+		  
+		</div>
+		
+
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/10/04/js%E6%A8%A1%E6%8B%9F%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">js模拟私有变量的实现</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/10/03/LHS%E3%80%81RHS/">
+        <span class="next-text nav-default">LHS、RHS</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
 
         
-<nav class="nav">
-  
-    <a href="/2020/10/04/js%E6%A8%A1%E6%8B%9F%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0/"><i class="iconfont iconleft"></i>js模拟私有变量的实现</a>
-  
-  
-    <a href="/2020/10/03/LHS%E3%80%81RHS/">LHS、RHS<i class="iconfont iconright"></i></a>
-  
-</nav>
-
-      </section>
-      
-      <section class="comments">
-  
-  <div class="btn" id="comments-btn">查看评论</div>
-  
-  
-</section>
-      
-    </section>
-  </div>
-</article>
-  </div>
-</main>
-  <footer class="footer">
-  <div class="footer-social">
-    
-    
-    
-    
-    
-    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconQQ "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconwechat-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconinstagram "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  icongithub-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconmail"></i>
-    </a>
+  <div class="comments" id="comments">
     
   </div>
-  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-</footer>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">aidalee.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
   
-      <div class="fab fab-plus">
-    <i class="iconfont iconplus"></i>
-  </div>
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
   
-  <div class="fab fab-daovoice">
-    <i class="iconfont iconcomment"></i>
-  </div>
+
   
-  <div class="fab fab-up">
-    <i class="iconfont iconcaret-up"></i>
-  </div>
-  
-</body>
 
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
 
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
-
-
-
-
-
-<script src="/js/utils.js"></script>
-<script src="/js/modules.js"></script>
-<script src="/js/zui.js"></script>
-<script src="/js/script.js"></script>
-
-
-
-
-
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i["DaoVoiceObject"] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    a.charset = "utf-8";
-    m.parentNode.insertBefore(a, m)
-  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
-    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
-  daovoice('init', {
-    app_id: "abcdefg"
-  }, {
-    launcher: {
-      disableLauncherIcon: true,
-    },
-  });
-  daovoice('update');
-</script>
-
-
-
-<script>
-  (function () {
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    } else {
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-  })();
-</script>
-
-
-<script>
-  var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
-
-
-
-
-
-
-
-
-
-
+  </body>
 </html>

@@ -1,177 +1,133 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>自动化测试简介 - Hexo</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="google" content="notranslate" />
-
-  
-  
-  <meta name="description" content="在当前 DevOps 的趋势下，持续集成（CI）和持续..."> 
-  
-  <meta name="author" content="aidalee"> 
-
-  
-    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
-  
-  
-    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
-  
-  
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
-  
-  
-    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
-  
-  
-    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
-    <meta rel="msapplication-TileColor" content="#000000">
-  
-
-  
-<link rel="stylesheet" href="/css/style.css">
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
 
-  
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_hhodbqn7tit.css">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-  
 
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
 
-  
+  <meta name="description" content="自动化测试简介"/>
 
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
 
-  
 
-  <script>
-    var CONFIG = window.CONFIG || {};
-    var ZHAOO = window.ZHAOO || {};
-    CONFIG = {
-      isHome: false,
-      fancybox: true,
-      pjax: false,
-      lazyload: {
-        enable: true,
-        loadingImage: '/images/theme/loading.gif',
-      },
-      donate: {
-        enable: true,
-        alipay: 'https://pic.izhaoo.com/alipay.jpg',
-        wechat: 'https://pic.izhaoo.com/wechat.jpg'
-      },
-      motto: {
-        api: '',
-        default: '万物皆有裂痕，那是光照进来的地方。'
-      },
-      galleries: {
-        enable: true
-      },
-      fab: {
-        enable: true,
-        alwaysShow: false
-      },
-      carrier: {
-        enable: true
-      },
-      daovoice: {
-        enable: true
-      }
-    }
-  </script>
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://aidalee.github.io/2021/03/06/自动化测试简介/"/>
+
+
+<meta name="description" content="在当前 DevOps 的趋势下，持续集成（CI）和持续部署（CD）具有支柱性地位，那么能够成功搭建 CI&#x2F;CD 流水线就至关重要了。在介绍 CI&#x2F;CD 流水线的工作原理之前，我们先了解一下什么是 DevOps。 什么是 DevOps？DevOps 是一种软件开发方法。它将持续开发、持续测试、持续集成、持续部署和持续监控贯穿于软件开发的整个生命周期。当前几乎所有的顶尖公司均采用了该方法，用以提高软件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动化测试简介">
+<meta property="og:url" content="https://aidalee.github.io/2021/03/06/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在当前 DevOps 的趋势下，持续集成（CI）和持续部署（CD）具有支柱性地位，那么能够成功搭建 CI&#x2F;CD 流水线就至关重要了。在介绍 CI&#x2F;CD 流水线的工作原理之前，我们先了解一下什么是 DevOps。 什么是 DevOps？DevOps 是一种软件开发方法。它将持续开发、持续测试、持续集成、持续部署和持续监控贯穿于软件开发的整个生命周期。当前几乎所有的顶尖公司均采用了该方法，用以提高软件">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-06T12:44:14.000Z">
+<meta property="article:modified_time" content="2021-03-06T13:15:29.448Z">
+<meta property="article:author" content="aidalee">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
 
   
 
-  
-<meta name="generator" content="Hexo 5.2.0"></head>
-<body class="lock-screen">
-  <div class="loading"></div>
-  
 
 
-<nav class="navbar">
-  <div class="left"></div>
-  <div class="center">自动化测试简介</div>
-  <div class="right">
-    <i class="iconfont iconmenu j-navbar-menu"></i>
-  </div>
-</nav>
+    <title> 自动化测试简介 - Hexo </title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
 
-  <nav class="menu">
-  <div class="menu-wrap">
-    <div class="menu-close">
-      <i class="iconfont iconbaseline-close-px"></i>
-    </div>
-    <ul class="menu-content">
-      
-      
-      
-      
-      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
-      
-    </ul>
-    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-  </div>
-</nav>
-  <main id="main">
-  <div class="container" id="container">
-    <article class="article">
-  <div class="wrap">
-    <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-  <div class="head-mask">
-    <h1 class="head-title">自动化测试简介</h1>
-    <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 06, 2021</span
-        class="post-info-item">
-      
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1764</span>
-    </div>
-  </div>
-</section>
-    <section class="main">
-      <section class="content">
-        <p>在当前 DevOps 的趋势下，持续集成（CI）和持续部署（CD）具有支柱性地位，那么能够成功搭建 CI/CD 流水线就至关重要了。在介绍 CI/CD 流水线的工作原理之前，我们先了解一下什么是 DevOps。</p>
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          自动化测试简介
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 06 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在当前 DevOps 的趋势下，持续集成（CI）和持续部署（CD）具有支柱性地位，那么能够成功搭建 CI/CD 流水线就至关重要了。在介绍 CI/CD 流水线的工作原理之前，我们先了解一下什么是 DevOps。</p>
 <h1 id="什么是-DevOps？"><a href="#什么是-DevOps？" class="headerlink" title="什么是 DevOps？"></a>什么是 DevOps？</h1><p>DevOps 是一种软件开发方法。它将持续开发、持续测试、持续集成、持续部署和持续监控贯穿于软件开发的整个生命周期。当前几乎所有的顶尖公司均采用了该方法，用以提高软件开发质量，并缩短软件开发生命周期。从而以达到每个公司对软件产品的期望，交付出客户最满意的产品。</p>
 <h1 id="什么是-CI-CD-流水线？"><a href="#什么是-CI-CD-流水线？" class="headerlink" title="什么是 CI/CD 流水线？"></a>什么是 CI/CD 流水线？</h1><p>CI 代表持续集成（Continuous Integration），CD 代表持续交付（Continuous Delivery）和持续部署（Continuous Deployment）。也可以将它们看作是类似于软件开发生命周期的过程<br>假如我们要构建一款 Web 应用程序，并将它部署在一个现场 Web 服务器上。同时我们有一组开发人员，他们主要负责编写代码，并将代码构建为 Web 应用程序。假设现在开发团队已经将代码提交到版本控制系统（如：Git，SVN）中了。</p>
 <h1 id="构建阶段"><a href="#构建阶段" class="headerlink" title="构建阶段"></a>构建阶段</h1><p>接下来，代码将会经历构建阶段，这也是 CI/CD 流水线的第一阶段。在此之前，开发者已经将他们的代码加上合适的标签，并提交到版本控制系统中了。<br>假如我们采用的是 Java 语言，那么还需要先进行代码编译。因此，代码在通过版本控制阶段之后，会先在构建阶段予以编译。该阶段会从代码库的各个分支中获取到所有的功能代码，合并后最终通过一个编译器来编译它们。这整个过程都被称为「构建阶段」。</p>
@@ -179,215 +135,88 @@
 <h1 id="部署阶段"><a href="#部署阶段" class="headerlink" title="部署阶段"></a>部署阶段</h1><p>测试阶段完成后，就要进入「部署阶段」了。在该阶段，代码将会被部署到准生产环境服务器（staging server）或者测试环境服务器（test server）中。同时在该阶段中，我们既可以查看程序代码，也可以在模拟器中运行该应用程序。</p>
 <h1 id="自动测试阶段"><a href="#自动测试阶段" class="headerlink" title="自动测试阶段"></a>自动测试阶段</h1><p>只要我们的代码部署成功，我们就可以运行另一组可用性测试了。该阶段结束后，如果所有的测试都通过了，那么就可以将其部署到生产环境中了。</p>
 <h1 id="部署到生产环境"><a href="#部署到生产环境" class="headerlink" title="部署到生产环境"></a>部署到生产环境</h1><p>另外值得一提的是我们可能在每一个阶段的执行过程中遇到一些错误。在这种情况下，我们可以将错误邮件发回到开发团队中，以便他们能够及时修复这些错误。当开发团队修复完成后，就可以将代码重新提交到版本控制系统中，然后再次从头开始执行该流水线。<br>如果在执行测试的过程中遇到了任何错误，那么这些错误也将反馈给开发团队，等他们修复完成后，同样会再次触发该流水线，进行新一轮的持续迭代。</p>
-<h1 id="度量和验证阶段"><a href="#度量和验证阶段" class="headerlink" title="度量和验证阶段"></a>度量和验证阶段</h1><p>因此，整个生命周期将会继续迭代下去，直到我们得到可以直接部署到生产环境中的代码或者产品。除此之外，在生产环境中我们还需要对代码进行度量和验证，以实时监控应用的线上运行状态。<br>FLOW平台：<a target="_blank" rel="noopener" href="http://flow.dasouche-inc.net/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8D/home">http://flow.dasouche-inc.net/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8D/home</a></p>
+<h1 id="度量和验证阶段"><a href="#度量和验证阶段" class="headerlink" title="度量和验证阶段"></a>度量和验证阶段</h1><p>因此，整个生命周期将会继续迭代下去，直到我们得到可以直接部署到生产环境中的代码或者产品。除此之外，在生产环境中我们还需要对代码进行度量和验证，以实时监控应用的线上运行状态。<br>FLOW平台：<a href="http://flow.dasouche-inc.net/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8D/home" target="_blank" rel="noopener">http://flow.dasouche-inc.net/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8D/home</a></p>
 <h1 id="java工程："><a href="#java工程：" class="headerlink" title="java工程："></a>java工程：</h1><p>传入参数并触发自动化脚本执行<br>报告：<br>错误信息查看：</p>
-<h1 id="mock环境："><a href="#mock环境：" class="headerlink" title="mock环境："></a>mock环境：</h1><p><a target="_blank" rel="noopener" href="http://jenkins.stable.dasouche.net/view/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8Dmock%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">http://jenkins.stable.dasouche.net/view/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8Dmock%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/</a></p>
-<h1 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h1><p><a target="_blank" rel="noopener" href="http://flow.dasouche-inc.net/docs/join-guide.html#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87">http://flow.dasouche-inc.net/docs/join-guide.html#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87</a></p>
+<h1 id="mock环境："><a href="#mock环境：" class="headerlink" title="mock环境："></a>mock环境：</h1><p><a href="http://jenkins.stable.dasouche.net/view/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8Dmock%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/" target="_blank" rel="noopener">http://jenkins.stable.dasouche.net/view/%E4%BE%9B%E5%BA%94%E9%93%BE%E9%87%91%E8%9E%8Dmock%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/</a></p>
+<h1 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h1><p><a href="http://flow.dasouche-inc.net/docs/join-guide.html#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87" target="_blank" rel="noopener">http://flow.dasouche-inc.net/docs/join-guide.html#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87</a></p>
 <h1 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h1><p>Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件项目可以进行持续集成</p>
 <h1 id="从零搭建Prometheus监控报警系统"><a href="#从零搭建Prometheus监控报警系统" class="headerlink" title="从零搭建Prometheus监控报警系统"></a>从零搭建Prometheus监控报警系统</h1><p>cnblogs.com/chenqionghe/p/10494868.html</p>
 
-      </section>
-      <section class="extra">
-        
-        <ul class="copyright">
-  
-  <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2021/03/06/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/index.html">https://aidalee.github.io/2021/03/06/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/index.html</a></li>
-  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
-      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
-  
-</ul>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+
         
         
-        <section class="donate">
-  <div class="qrcode">
-    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
-  </div>
-  <div class="icon">
-    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
-    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
-  </div>
-</section>
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/03/06/%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8%E5%8F%91%E5%B8%83%E2%80%94%E2%80%94devops/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">前端应用发布——devops</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2021/03/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E4%B8%8E%E6%8A%93%E5%8C%85/">
+        <span class="next-text nav-default">移动端调试与抓包</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
         
-        
-        
-<nav class="nav">
-  
-    <a href="/2021/03/06/%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8%E5%8F%91%E5%B8%83%E2%80%94%E2%80%94devops/"><i class="iconfont iconleft"></i>前端应用发布——devops</a>
-  
-  
-    <a href="/2021/03/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E4%B8%8E%E6%8A%93%E5%8C%85/">移动端调试与抓包<i class="iconfont iconright"></i></a>
-  
-</nav>
-
-      </section>
-      
-      <section class="comments">
-  
-  <div class="btn" id="comments-btn">查看评论</div>
-  
-  
-</section>
-      
-    </section>
-  </div>
-</article>
-  </div>
-</main>
-  <footer class="footer">
-  <div class="footer-social">
-    
-    
-    
-    
-    
-    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconQQ "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconwechat-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconinstagram "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  icongithub-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconmail"></i>
-    </a>
+  <div class="comments" id="comments">
     
   </div>
-  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-</footer>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">aidalee.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
   
-      <div class="fab fab-plus">
-    <i class="iconfont iconplus"></i>
-  </div>
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
   
-  <div class="fab fab-daovoice">
-    <i class="iconfont iconcomment"></i>
-  </div>
+
   
-  <div class="fab fab-up">
-    <i class="iconfont iconcaret-up"></i>
-  </div>
-  
-</body>
 
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
 
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
-
-
-
-
-
-<script src="/js/utils.js"></script>
-<script src="/js/modules.js"></script>
-<script src="/js/zui.js"></script>
-<script src="/js/script.js"></script>
-
-
-
-
-
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i["DaoVoiceObject"] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    a.charset = "utf-8";
-    m.parentNode.insertBefore(a, m)
-  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
-    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
-  daovoice('init', {
-    app_id: "abcdefg"
-  }, {
-    launcher: {
-      disableLauncherIcon: true,
-    },
-  });
-  daovoice('update');
-</script>
-
-
-
-<script>
-  (function () {
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    } else {
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-  })();
-</script>
-
-
-<script>
-  var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
-
-
-
-
-
-
-
-
-
-
+  </body>
 </html>

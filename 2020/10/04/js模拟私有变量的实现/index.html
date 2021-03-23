@@ -1,395 +1,231 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>js模拟私有变量的实现 - Hexo</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="google" content="notranslate" />
-
-  
-  
-  <meta name="description" content="对私有变量的理解js 是面向对象语言，其本质是基于原型..."> 
-  
-  <meta name="author" content="aidalee"> 
-
-  
-    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
-  
-  
-    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
-  
-  
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
-  
-  
-    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
-  
-  
-    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
-    <meta rel="msapplication-TileColor" content="#000000">
-  
-
-  
-<link rel="stylesheet" href="/css/style.css">
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
 
-  
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_hhodbqn7tit.css">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-  
 
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
 
-  
+  <meta name="description" content="js模拟私有变量的实现"/>
 
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
 
-  
 
-  <script>
-    var CONFIG = window.CONFIG || {};
-    var ZHAOO = window.ZHAOO || {};
-    CONFIG = {
-      isHome: false,
-      fancybox: true,
-      pjax: false,
-      lazyload: {
-        enable: true,
-        loadingImage: '/images/theme/loading.gif',
-      },
-      donate: {
-        enable: true,
-        alipay: 'https://pic.izhaoo.com/alipay.jpg',
-        wechat: 'https://pic.izhaoo.com/wechat.jpg'
-      },
-      motto: {
-        api: '',
-        default: '万物皆有裂痕，那是光照进来的地方。'
-      },
-      galleries: {
-        enable: true
-      },
-      fab: {
-        enable: true,
-        alwaysShow: false
-      },
-      carrier: {
-        enable: true
-      },
-      daovoice: {
-        enable: true
-      }
-    }
-  </script>
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://aidalee.github.io/2020/10/04/js模拟私有变量的实现/"/>
+
+
+<meta name="description" content="对私有变量的理解js 是面向对象语言，其本质是基于原型，而非像Java一样基于类。在js中强调的是对象，而非类的概念。在es6之前生成对象实例常用的方式都是基于构造函数： 1234567891011121314&#x2F;&#x2F; 定义构造函数function Dog(name) &amp;#123;  this.name &#x3D; name&amp;#125;&#x2F;&#x2F; 挂载原型方法Dog.prototype.showName &#x3D; fun">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js模拟私有变量的实现">
+<meta property="og:url" content="https://aidalee.github.io/2020/10/04/js%E6%A8%A1%E6%8B%9F%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对私有变量的理解js 是面向对象语言，其本质是基于原型，而非像Java一样基于类。在js中强调的是对象，而非类的概念。在es6之前生成对象实例常用的方式都是基于构造函数： 1234567891011121314&#x2F;&#x2F; 定义构造函数function Dog(name) &amp;#123;  this.name &#x3D; name&amp;#125;&#x2F;&#x2F; 挂载原型方法Dog.prototype.showName &#x3D; fun">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-04T02:11:38.000Z">
+<meta property="article:modified_time" content="2020-10-04T02:42:44.510Z">
+<meta property="article:author" content="aidalee">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
 
   
 
-  
-<meta name="generator" content="Hexo 5.2.0"></head>
-<body class="lock-screen">
-  <div class="loading"></div>
-  
 
 
-<nav class="navbar">
-  <div class="left"></div>
-  <div class="center">js模拟私有变量的实现</div>
-  <div class="right">
-    <i class="iconfont iconmenu j-navbar-menu"></i>
-  </div>
-</nav>
+    <title> js模拟私有变量的实现 - Hexo </title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
 
-  <nav class="menu">
-  <div class="menu-wrap">
-    <div class="menu-close">
-      <i class="iconfont iconbaseline-close-px"></i>
-    </div>
-    <ul class="menu-content">
-      
-      
-      
-      
-      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
-      
-    </ul>
-    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-  </div>
-</nav>
-  <main id="main">
-  <div class="container" id="container">
-    <article class="article">
-  <div class="wrap">
-    <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-  <div class="head-mask">
-    <h1 class="head-title">js模拟私有变量的实现</h1>
-    <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 04, 2020</span
-        class="post-info-item">
-      
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2389</span>
-    </div>
-  </div>
-</section>
-    <section class="main">
-      <section class="content">
-        <h1 id="对私有变量的理解"><a href="#对私有变量的理解" class="headerlink" title="对私有变量的理解"></a>对私有变量的理解</h1><p>js 是面向对象语言，其本质是基于原型，而非像Java一样基于类。在js中强调的是对象，而非类的概念。<br>在es6之前生成对象实例常用的方式都是基于构造函数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 定义构造函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Dog</span>(<span class="hljs-params">name</span>) </span>&#123;<br>  <span class="hljs-built_in">this</span>.name = name<br>&#125;<br><br><span class="hljs-comment">// 挂载原型方法</span><br>Dog.prototype.showName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name)<br>&#125;<br><br><span class="hljs-comment">// 通过构造函数创建对象实例</span><br><span class="hljs-keyword">var</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">&#x27;哈士奇&#x27;</span>)<br><span class="hljs-comment">// 输出 ’哈士奇‘</span><br>dog.showName()<br><br></code></pre></td></tr></table></figure>
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          js模拟私有变量的实现
+        
+      </h1>
+
+      <time class="post-time">
+          Oct 04 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="对私有变量的理解"><a href="#对私有变量的理解" class="headerlink" title="对私有变量的理解"></a>对私有变量的理解</h1><p>js 是面向对象语言，其本质是基于原型，而非像Java一样基于类。在js中强调的是对象，而非类的概念。<br>在es6之前生成对象实例常用的方式都是基于构造函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 定义构造函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Dog</span>(<span class="hljs-params">name</span>) </span>&#123;<br>  <span class="hljs-keyword">this</span>.name = name<br>&#125;<br><br><span class="hljs-comment">// 挂载原型方法</span><br>Dog.prototype.showName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name)<br>&#125;<br><br><span class="hljs-comment">// 通过构造函数创建对象实例</span><br><span class="hljs-keyword">var</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">'哈士奇'</span>)<br><span class="hljs-comment">// 输出 ’哈士奇‘</span><br>dog.showName()<br></code></pre></td></tr></table></figure>
 
 <p>在es6中可以使用class模拟实现类：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 构造函数，相当于上一个例子中的 Dog 函数</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> </span>&#123;<br>    <span class="hljs-keyword">constructor</span>(name) &#123;<br>    <span class="hljs-comment">// 构造函数的函数体内容</span><br>    <span class="hljs-built_in">this</span>.name = name<br>  &#125;<br>  <br>  showName() &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name)<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 仍然是使用 new 关键字来创建实例</span><br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">&#x27;哈士奇&#x27;</span>)<br><span class="hljs-comment">// 输出 &#x27;哈士奇&#x27;</span><br>dog.showName()<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 构造函数，相当于上一个例子中的 Dog 函数</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> </span>&#123;<br>    <span class="hljs-keyword">constructor</span>(name) &#123;<br>    <span class="hljs-comment">// 构造函数的函数体内容</span><br>    <span class="hljs-keyword">this</span>.name = name<br>  &#125;<br>  <br>  showName() &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name)<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 仍然是使用 new 关键字来创建实例</span><br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">'哈士奇'</span>)<br><span class="hljs-comment">// 输出 '哈士奇'</span><br>dog.showName()<br></code></pre></td></tr></table></figure>
 <p>那么私有变量又是干嘛的，为什么需要它？看下面伪代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">constructor</span>(username, password) &#123;<br>    <span class="hljs-comment">// 用户名</span><br>    <span class="hljs-built_in">this</span>.username = username<br>    <span class="hljs-comment">// 密码</span><br>    <span class="hljs-built_in">this</span>.password = password<br>  &#125;<br>  <br>  login() &#123;<br>    <span class="hljs-comment">// 使用 fetch 进行登录请求</span><br>    fetch(登录请求的目标url地址, &#123;<br>      method: <span class="hljs-string">&#x27;POST&#x27;</span>, <span class="hljs-comment">// 指定请求方法为post</span><br>      body: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>        username,<br>        password<br>      &#125;), <span class="hljs-comment">// 请求参数带上用户名和密码</span><br>            ...  <span class="hljs-comment">// 这里省略其它 fetch 参数</span><br>    &#125;).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json())<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">constructor</span>(username, password) &#123;<br>    <span class="hljs-comment">// 用户名</span><br>    <span class="hljs-keyword">this</span>.username = username<br>    <span class="hljs-comment">// 密码</span><br>    <span class="hljs-keyword">this</span>.password = password<br>  &#125;<br>  <br>  login() &#123;<br>    <span class="hljs-comment">// 使用 fetch 进行登录请求</span><br>    fetch(登录请求的目标url地址, &#123;<br>      method: <span class="hljs-string">'POST'</span>, <span class="hljs-comment">// 指定请求方法为post</span><br>      body: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>        username,<br>        password<br>      &#125;), <span class="hljs-comment">// 请求参数带上用户名和密码</span><br>            ...  <span class="hljs-comment">// 这里省略其它 fetch 参数</span><br>    &#125;).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json())<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>在这个User类中，我们的本意是实现login这个能力，并且确保User的每一个实例都具备这个能力：</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">let <span class="hljs-keyword">user</span> = <span class="hljs-built_in">new</span> <span class="hljs-keyword">User</span>(<span class="hljs-string">&#x27;xl&#x27;</span>, <span class="hljs-string">&#x27;xl123&#x27;</span>)<br>// 输出 <span class="hljs-keyword">login</span> 函数的内容，说明 <span class="hljs-keyword">User</span> 的实例中有 <span class="hljs-keyword">login</span> 这个方法<br><span class="hljs-keyword">user</span>.<span class="hljs-keyword">login</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">let <span class="hljs-keyword">user</span> = <span class="hljs-built_in">new</span> <span class="hljs-keyword">User</span>(<span class="hljs-string">'xl'</span>, <span class="hljs-string">'xl123'</span>)<br>// 输出 <span class="hljs-keyword">login</span> 函数的内容，说明 <span class="hljs-keyword">User</span> 的实例中有 <span class="hljs-keyword">login</span> 这个方法<br><span class="hljs-keyword">user</span>.<span class="hljs-keyword">login</span><br></code></pre></td></tr></table></figure>
 <p>我们看到，login 方法已经成功的被实现了。但这里面藏着一个隐患，现在我尝试输出一下 password：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">user.password<br><span class="hljs-regexp">//</span> 会输出‘xl123’<br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">user</span>.<span class="hljs-keyword">password</span><br>// 会输出‘xl123’<br></code></pre></td></tr></table></figure>
 <p>登录密码这么关键且敏感的信息，竟然听过一个简单的属性就可以拿到，这就意味着，后面的人只要能拿到user这个对象，就可以非常轻松的得知、甚至改写密码。<br>像password这样的变量，我们希望它仅在对象内部生效，无法从外部触及，这样的变量就是私有变量。<br>那么在 JS 中，既然无法通过 private 这样的关键字直接在类里声明变量的私有性，我们就只能另寻它法。利用闭包概念和作用域特性，可以想到把私有变量用函数作用域来保护起来，形成一个闭包。</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">// 利用闭包生成IIFE，返回 <span class="hljs-keyword">User</span> 类<br>const <span class="hljs-keyword">User</span> = (<span class="hljs-keyword">function</span>() &#123;<br>    // 定义私有变量_password<br>    let _password<br><br>    <span class="hljs-keyword">class</span> <span class="hljs-keyword">User</span> &#123;<br>        constructor (username, <span class="hljs-keyword">password</span>) &#123;<br>            // 初始化私有变量_password<br>            _password = <span class="hljs-keyword">password</span><br>            this.username = username<br>        &#125;<br><br>       <span class="hljs-keyword">login</span>() &#123;<br>           // 这里我们增加一行 console，为了验证 <span class="hljs-keyword">login</span> 里仍可以顺利拿到密码<br>           console.log(this.username, _password)<br>           // 使用 <span class="hljs-keyword">fetch</span> 进行登录请求，同上，此处省略<br>       &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">User</span><br>&#125;)()<br><br>let <span class="hljs-keyword">user</span> = <span class="hljs-built_in">new</span> <span class="hljs-keyword">User</span>(<span class="hljs-string">&#x27;xl&#x27;</span>, <span class="hljs-string">&#x27;xl123&#x27;</span>)<br>console.log(<span class="hljs-keyword">user</span>.username)<br>console.log(<span class="hljs-keyword">user</span>.<span class="hljs-keyword">password</span>)<br>console.log(<span class="hljs-keyword">user</span>._password)<br><span class="hljs-keyword">user</span>.<span class="hljs-keyword">login</span>()<br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">// 利用闭包生成IIFE，返回 <span class="hljs-keyword">User</span> 类<br>const <span class="hljs-keyword">User</span> = (<span class="hljs-keyword">function</span>() &#123;<br>    // 定义私有变量_password<br>    let _password<br><br>    <span class="hljs-keyword">class</span> <span class="hljs-keyword">User</span> &#123;<br>        constructor (username, <span class="hljs-keyword">password</span>) &#123;<br>            // 初始化私有变量_password<br>            _password = <span class="hljs-keyword">password</span><br>            this.username = username<br>        &#125;<br><br>       <span class="hljs-keyword">login</span>() &#123;<br>           // 这里我们增加一行 console，为了验证 <span class="hljs-keyword">login</span> 里仍可以顺利拿到密码<br>           console.log(this.username, _password)<br>           // 使用 <span class="hljs-keyword">fetch</span> 进行登录请求，同上，此处省略<br>       &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">User</span><br>&#125;)()<br><br>let <span class="hljs-keyword">user</span> = <span class="hljs-built_in">new</span> <span class="hljs-keyword">User</span>(<span class="hljs-string">'xl'</span>, <span class="hljs-string">'xl123'</span>)<br>console.log(<span class="hljs-keyword">user</span>.username)<br>console.log(<span class="hljs-keyword">user</span>.<span class="hljs-keyword">password</span>)<br>console.log(<span class="hljs-keyword">user</span>._password)<br><span class="hljs-keyword">user</span>.<span class="hljs-keyword">login</span>()<br></code></pre></td></tr></table></figure>
 <p>我们看到不管是 password，还是 _password，都被好好地保护在了 User 这个立即执行函数的内部。此时打印出 user 实例的组成可以看到它对外暴露的属性已经没有password。通过闭包成功达到了用自由变量来模拟私有变量的效果。</p>
 
-      </section>
-      <section class="extra">
-        
-        <ul class="copyright">
-  
-  <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2020/10/04/js%E6%A8%A1%E6%8B%9F%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">https://aidalee.github.io/2020/10/04/js%E6%A8%A1%E6%8B%9F%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html</a></li>
-  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
-      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
-  
-</ul>
-        
-        
-        <section class="donate">
-  <div class="qrcode">
-    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
-  </div>
-  <div class="icon">
-    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
-    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
-  </div>
-</section>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/js/">js</a>
+		  
+		</div>
+		
+
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/10/04/%E5%81%8F%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9F%AF%E9%87%8C%E5%8C%96/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">偏函数与柯里化</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+        <span class="next-text nav-default">词法作用域和动态作用域</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
 
         
-<nav class="nav">
-  
-    <a href="/2020/10/04/%E5%81%8F%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9F%AF%E9%87%8C%E5%8C%96/"><i class="iconfont iconleft"></i>偏函数与柯里化</a>
-  
-  
-    <a href="/2020/10/03/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/">词法作用域和动态作用域<i class="iconfont iconright"></i></a>
-  
-</nav>
-
-      </section>
-      
-      <section class="comments">
-  
-  <div class="btn" id="comments-btn">查看评论</div>
-  
-  
-</section>
-      
-    </section>
-  </div>
-</article>
-  </div>
-</main>
-  <footer class="footer">
-  <div class="footer-social">
-    
-    
-    
-    
-    
-    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconQQ "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconwechat-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconinstagram "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  icongithub-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconmail"></i>
-    </a>
+  <div class="comments" id="comments">
     
   </div>
-  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-</footer>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">aidalee.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
   
-      <div class="fab fab-plus">
-    <i class="iconfont iconplus"></i>
-  </div>
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
   
-  <div class="fab fab-daovoice">
-    <i class="iconfont iconcomment"></i>
-  </div>
+
   
-  <div class="fab fab-up">
-    <i class="iconfont iconcaret-up"></i>
-  </div>
-  
-</body>
 
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
 
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
-
-
-
-
-
-<script src="/js/utils.js"></script>
-<script src="/js/modules.js"></script>
-<script src="/js/zui.js"></script>
-<script src="/js/script.js"></script>
-
-
-
-
-
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i["DaoVoiceObject"] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    a.charset = "utf-8";
-    m.parentNode.insertBefore(a, m)
-  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
-    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
-  daovoice('init', {
-    app_id: "abcdefg"
-  }, {
-    launcher: {
-      disableLauncherIcon: true,
-    },
-  });
-  daovoice('update');
-</script>
-
-
-
-<script>
-  (function () {
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    } else {
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-  })();
-</script>
-
-
-<script>
-  var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
-
-
-
-
-
-
-
-
-
-
+  </body>
 </html>

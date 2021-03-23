@@ -1,382 +1,218 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>vscode-config - Hexo</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="google" content="notranslate" />
-
-  
-  
-  <meta name="description" content="123456789101112131415161718..."> 
-  
-  <meta name="author" content="aidalee"> 
-
-  
-    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
-  
-  
-    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
-  
-  
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
-  
-  
-    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
-  
-  
-    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
-    <meta rel="msapplication-TileColor" content="#000000">
-  
-
-  
-<link rel="stylesheet" href="/css/style.css">
-
-
-  
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_hhodbqn7tit.css">
-
-  
-
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
-
-  
-
-  
-  
-  
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
-
-  
-
-  <script>
-    var CONFIG = window.CONFIG || {};
-    var ZHAOO = window.ZHAOO || {};
-    CONFIG = {
-      isHome: false,
-      fancybox: true,
-      pjax: false,
-      lazyload: {
-        enable: true,
-        loadingImage: '/images/theme/loading.gif',
-      },
-      donate: {
-        enable: true,
-        alipay: 'https://pic.izhaoo.com/alipay.jpg',
-        wechat: 'https://pic.izhaoo.com/wechat.jpg'
-      },
-      motto: {
-        api: '',
-        default: '万物皆有裂痕，那是光照进来的地方。'
-      },
-      galleries: {
-        enable: true
-      },
-      fab: {
-        enable: true,
-        alwaysShow: false
-      },
-      carrier: {
-        enable: true
-      },
-      daovoice: {
-        enable: true
-      }
-    }
-  </script>
-
-  
-
-  
-<meta name="generator" content="Hexo 5.2.0"></head>
-<body class="lock-screen">
-  <div class="loading"></div>
-  
-
-
-<nav class="navbar">
-  <div class="left"></div>
-  <div class="center">vscode-config</div>
-  <div class="right">
-    <i class="iconfont iconmenu j-navbar-menu"></i>
-  </div>
-</nav>
-
-  <nav class="menu">
-  <div class="menu-wrap">
-    <div class="menu-close">
-      <i class="iconfont iconbaseline-close-px"></i>
-    </div>
-    <ul class="menu-content">
-      
-      
-      
-      
-      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
-      
-      
-      
-      
-      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
-      
-    </ul>
-    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-  </div>
-</nav>
-  <main id="main">
-  <div class="container" id="container">
-    <article class="article">
-  <div class="wrap">
-    <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-  <div class="head-mask">
-    <h1 class="head-title">vscode-config</h1>
-    <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 09, 2021</span
-        class="post-info-item">
-      
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2658</span>
-    </div>
-  </div>
-</section>
-    <section class="main">
-      <section class="content">
-        <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;window.zoomLevel&quot;</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">&quot;eslint.validate&quot;</span>: [<br>    <span class="hljs-string">&quot;javascript&quot;</span>,<br>    <span class="hljs-string">&quot;javascriptreact&quot;</span>,<br>    <span class="hljs-string">&quot;html&quot;</span>,<br>    <span class="hljs-string">&quot;vue&quot;</span>,<br>    &#123;<br>      <span class="hljs-attr">&quot;language&quot;</span>: <span class="hljs-string">&quot;vue&quot;</span>,<br>      <span class="hljs-attr">&quot;autoFix&quot;</span>: <span class="hljs-literal">true</span><br>    &#125;,<br>    &#123;<br>      <span class="hljs-attr">&quot;language&quot;</span>: <span class="hljs-string">&quot;html&quot;</span>,<br>      <span class="hljs-attr">&quot;autoFix&quot;</span>: <span class="hljs-literal">true</span><br>    &#125;<br>  ],<br>  <span class="hljs-attr">&quot;files.associations&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;*.vue&quot;</span>: <span class="hljs-string">&quot;vue&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;vetur.format.defaultFormatter.html&quot;</span>: <span class="hljs-string">&quot;js-beautify-html&quot;</span>,<br>  <span class="hljs-attr">&quot;explorer.confirmDelete&quot;</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">&quot;vetur.format.options.tabSize&quot;</span>: <span class="hljs-number">4</span>,<br>  <span class="hljs-attr">&quot;vetur.format.options.useTabs&quot;</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">&quot;vetur.format.defaultFormatterOptions&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;js-beautify-html&quot;</span>: &#123;<br>      <span class="hljs-attr">&quot;wrap_line_length&quot;</span>: <span class="hljs-number">120</span>,<br>      <span class="hljs-attr">&quot;wrap_attributes&quot;</span>: <span class="hljs-string">&quot;force-aligned&quot;</span>,<br>      <span class="hljs-attr">&quot;end_with_newline&quot;</span>: <span class="hljs-literal">false</span><br>    &#125;,<br>    <span class="hljs-attr">&quot;prettier&quot;</span>: &#123;<br>      <span class="hljs-attr">&quot;singleQuote&quot;</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">//用单引号</span><br>    &#125;<br>  &#125;,<br>  <span class="hljs-attr">&quot;eslint.alwaysShowStatus&quot;</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">&quot;workbench.iconTheme&quot;</span>: <span class="hljs-string">&quot;material-icon-theme&quot;</span>,<br>  <span class="hljs-attr">&quot;[css]&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;[javascript]&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;workbench.colorTheme&quot;</span>: <span class="hljs-string">&quot;One Dark Pro&quot;</span>,<br>  <span class="hljs-attr">&quot;[json]&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;[vue]&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;octref.vetur&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;eslint.migration.2_x&quot;</span>: <span class="hljs-string">&quot;off&quot;</span>,<br>  <span class="hljs-attr">&quot;editor.codeActionsOnSave&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;source.fixAll&quot;</span>: <span class="hljs-literal">true</span>,<br>  &#125;,<br>  <span class="hljs-attr">&quot;[javascriptreact]&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;iceworks.materialSources&quot;</span>: [],<br>  <span class="hljs-attr">&quot;iceworks.workspace&quot;</span>: <span class="hljs-string">&quot;/Users/gucan/Desktop/test&quot;</span>,<br>  <span class="hljs-attr">&quot;leetcode.endpoint&quot;</span>: <span class="hljs-string">&quot;leetcode-cn&quot;</span>,<br>  <span class="hljs-attr">&quot;leetcode.workspaceFolder&quot;</span>: <span class="hljs-string">&quot;/Users/gucan/.leetcode&quot;</span>,<br>  <span class="hljs-attr">&quot;leetcode.defaultLanguage&quot;</span>: <span class="hljs-string">&quot;typescript&quot;</span>,<br>  <span class="hljs-attr">&quot;[typescriptreact]&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span>: <span class="hljs-string">&quot;esbenp.prettier-vscode&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;git.enableSmartCommit&quot;</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">&quot;explorer.confirmDragAndDrop&quot;</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">&quot;eslint.codeAction.showDocumentation&quot;</span>: &#123;<br>  <br>  <br>    <span class="hljs-attr">&quot;enable&quot;</span>: <span class="hljs-literal">true</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-      </section>
-      <section class="extra">
-        
-        <ul class="copyright">
-  
-  <li><strong>本文作者：</strong>aidalee</li>
-  <li><strong>本文链接：</strong><a href="https://aidalee.github.io/2021/03/09/vscode-config/index.html">https://aidalee.github.io/2021/03/09/vscode-config/index.html</a></li>
-  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
-      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
-  
-</ul>
-        
-        
-        <section class="donate">
-  <div class="qrcode">
-    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
-  </div>
-  <div class="icon">
-    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
-    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
-  </div>
-</section>
-        
-        
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint%E4%BF%9D%E5%AD%98%E8%87%AA%E5%8A%A8%E6%A0%A1%E9%AA%8C%E5%B9%B6%E4%BF%AE%E5%A4%8D/" rel="tag">eslint保存自动校验并修复</a></li></ul>
-
-        
-<nav class="nav">
-  
-    <a href="/2021/03/11/vue%E6%8C%87%E4%BB%A4%E8%BF%87%E6%BB%A4%E5%99%A8%E5%85%AC%E5%85%B1%E6%96%B9%E6%B3%95%E5%BA%93/"><i class="iconfont iconleft"></i>vue指令过滤器公共方法库</a>
-  
-  
-    <a href="/2021/03/06/%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8%E5%8F%91%E5%B8%83%E2%80%94%E2%80%94devops/">前端应用发布——devops<i class="iconfont iconright"></i></a>
-  
-</nav>
-
-      </section>
-      
-      <section class="comments">
-  
-  <div class="btn" id="comments-btn">查看评论</div>
-  
-  
-</section>
-      
-    </section>
-  </div>
-</article>
-  </div>
-</main>
-  <footer class="footer">
-  <div class="footer-social">
+<html lang="en">
+  <head>
     
-    
-    
-    
-    
-    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconQQ "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconwechat-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconinstagram "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  icongithub-fill "></i>
-    </a>
-    
-    
-    
-    
-    
-    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
-      onMouseOut="this.style.color='#33333D'">
-      <i class="iconfont footer-social-item  iconmail"></i>
-    </a>
-    
-  </div>
-  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-</footer>
-  
-      <div class="fab fab-plus">
-    <i class="iconfont iconplus"></i>
-  </div>
-  
-  <div class="fab fab-daovoice">
-    <i class="iconfont iconcomment"></i>
-  </div>
-  
-  <div class="fab fab-up">
-    <i class="iconfont iconcaret-up"></i>
-  </div>
-  
-</body>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
 
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="vscode-config"/>
+
+
+
+
+  <meta name="keywords" content="eslint保存自动校验并修复," />
 
 
 
 
 
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-
+  <link rel="alternate" href="/default" title="Hexo">
 
 
 
 
-
-<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
 
 
 
+<link rel="canonical" href="https://aidalee.github.io/2021/03/09/vscode-config/"/>
 
 
-<script src="/js/utils.js"></script>
-<script src="/js/modules.js"></script>
-<script src="/js/zui.js"></script>
-<script src="/js/script.js"></script>
+<meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071&amp;#123;  &quot;window.zoomLevel&quot;: 2,  &quot;eslint.validate&quot;: [    &quot;javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode-config">
+<meta property="og:url" content="https://aidalee.github.io/2021/03/09/vscode-config/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071&amp;#123;  &quot;window.zoomLevel&quot;: 2,  &quot;eslint.validate&quot;: [    &quot;javascript">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-09T06:13:55.000Z">
+<meta property="article:modified_time" content="2021-03-18T10:12:42.284Z">
+<meta property="article:author" content="aidalee">
+<meta property="article:tag" content="eslint保存自动校验并修复">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
 
 
 
 
 
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i["DaoVoiceObject"] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    a.charset = "utf-8";
-    m.parentNode.insertBefore(a, m)
-  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
-    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
-  daovoice('init', {
-    app_id: "abcdefg"
-  }, {
-    launcher: {
-      disableLauncherIcon: true,
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
     },
-  });
-  daovoice('update');
-</script>
-
-
-
-<script>
-  (function () {
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    } else {
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-  })();
-</script>
-
-
-<script>
-  var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
+  };
 </script>
 
 
 
 
+  
+
+
+
+    <title> vscode-config - Hexo </title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          vscode-config
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 09 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">"window.zoomLevel"</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">"eslint.validate"</span>: [<br>    <span class="hljs-string">"javascript"</span>,<br>    <span class="hljs-string">"javascriptreact"</span>,<br>    <span class="hljs-string">"html"</span>,<br>    <span class="hljs-string">"vue"</span>,<br>    &#123;<br>      <span class="hljs-attr">"language"</span>: <span class="hljs-string">"vue"</span>,<br>      <span class="hljs-attr">"autoFix"</span>: <span class="hljs-literal">true</span><br>    &#125;,<br>    &#123;<br>      <span class="hljs-attr">"language"</span>: <span class="hljs-string">"html"</span>,<br>      <span class="hljs-attr">"autoFix"</span>: <span class="hljs-literal">true</span><br>    &#125;<br>  ],<br>  <span class="hljs-attr">"files.associations"</span>: &#123;<br>    <span class="hljs-attr">"*.vue"</span>: <span class="hljs-string">"vue"</span><br>  &#125;,<br>  <span class="hljs-attr">"vetur.format.defaultFormatter.html"</span>: <span class="hljs-string">"js-beautify-html"</span>,<br>  <span class="hljs-attr">"explorer.confirmDelete"</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">"vetur.format.options.tabSize"</span>: <span class="hljs-number">4</span>,<br>  <span class="hljs-attr">"vetur.format.options.useTabs"</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">"vetur.format.defaultFormatterOptions"</span>: &#123;<br>    <span class="hljs-attr">"js-beautify-html"</span>: &#123;<br>      <span class="hljs-attr">"wrap_line_length"</span>: <span class="hljs-number">120</span>,<br>      <span class="hljs-attr">"wrap_attributes"</span>: <span class="hljs-string">"force-aligned"</span>,<br>      <span class="hljs-attr">"end_with_newline"</span>: <span class="hljs-literal">false</span><br>    &#125;,<br>    <span class="hljs-attr">"prettier"</span>: &#123;<br>      <span class="hljs-attr">"singleQuote"</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">//用单引号</span><br>    &#125;<br>  &#125;,<br>  <span class="hljs-attr">"eslint.alwaysShowStatus"</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">"workbench.iconTheme"</span>: <span class="hljs-string">"material-icon-theme"</span>,<br>  <span class="hljs-attr">"[css]"</span>: &#123;<br>    <span class="hljs-attr">"editor.defaultFormatter"</span>: <span class="hljs-string">"esbenp.prettier-vscode"</span><br>  &#125;,<br>  <span class="hljs-attr">"[javascript]"</span>: &#123;<br>    <span class="hljs-attr">"editor.defaultFormatter"</span>: <span class="hljs-string">"esbenp.prettier-vscode"</span><br>  &#125;,<br>  <span class="hljs-attr">"workbench.colorTheme"</span>: <span class="hljs-string">"One Dark Pro"</span>,<br>  <span class="hljs-attr">"[json]"</span>: &#123;<br>    <span class="hljs-attr">"editor.defaultFormatter"</span>: <span class="hljs-string">"esbenp.prettier-vscode"</span><br>  &#125;,<br>  <span class="hljs-attr">"[vue]"</span>: &#123;<br>    <span class="hljs-attr">"editor.defaultFormatter"</span>: <span class="hljs-string">"octref.vetur"</span><br>  &#125;,<br>  <span class="hljs-attr">"eslint.migration.2_x"</span>: <span class="hljs-string">"off"</span>,<br>  <span class="hljs-attr">"editor.codeActionsOnSave"</span>: &#123;<br>    <span class="hljs-attr">"source.fixAll"</span>: <span class="hljs-literal">true</span>,<br>  &#125;,<br>  <span class="hljs-attr">"[javascriptreact]"</span>: &#123;<br>    <span class="hljs-attr">"editor.defaultFormatter"</span>: <span class="hljs-string">"esbenp.prettier-vscode"</span><br>  &#125;,<br>  <span class="hljs-attr">"iceworks.materialSources"</span>: [],<br>  <span class="hljs-attr">"iceworks.workspace"</span>: <span class="hljs-string">"/Users/gucan/Desktop/test"</span>,<br>  <span class="hljs-attr">"leetcode.endpoint"</span>: <span class="hljs-string">"leetcode-cn"</span>,<br>  <span class="hljs-attr">"leetcode.workspaceFolder"</span>: <span class="hljs-string">"/Users/gucan/.leetcode"</span>,<br>  <span class="hljs-attr">"leetcode.defaultLanguage"</span>: <span class="hljs-string">"typescript"</span>,<br>  <span class="hljs-attr">"[typescriptreact]"</span>: &#123;<br>    <span class="hljs-attr">"editor.defaultFormatter"</span>: <span class="hljs-string">"esbenp.prettier-vscode"</span><br>  &#125;,<br>  <span class="hljs-attr">"git.enableSmartCommit"</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">"explorer.confirmDragAndDrop"</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">"eslint.codeAction.showDocumentation"</span>: &#123;<br>  <br>  <br>    <span class="hljs-attr">"enable"</span>: <span class="hljs-literal">true</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/eslint%E4%BF%9D%E5%AD%98%E8%87%AA%E5%8A%A8%E6%A0%A1%E9%AA%8C%E5%B9%B6%E4%BF%AE%E5%A4%8D/">eslint保存自动校验并修复</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/03/11/vue%E6%8C%87%E4%BB%A4%E8%BF%87%E6%BB%A4%E5%99%A8%E5%85%AC%E5%85%B1%E6%96%B9%E6%B3%95%E5%BA%93/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">vue指令过滤器公共方法库</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2021/03/06/%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8%E5%8F%91%E5%B8%83%E2%80%94%E2%80%94devops/">
+        <span class="next-text nav-default">前端应用发布——devops</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2021
+    <span class="footer-author">aidalee.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
 
 
 
 
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
 
+  
 
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
 </html>
